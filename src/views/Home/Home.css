@@ -1,0 +1,28 @@
+ion-content {
+    /* --background: #fff url('../../../public/assets/home.png') 0 0/100% 100% no-repeat; */
+    --background: #fbf8ee;
+
+}
+
+@media (max-width: 820px) {
+    #logo {
+        width: 10%;
+    }
+}
+
+@media (max-width: 600px) {
+    #logo {
+        width: 20%;
+    }
+}
+
+@media (max-width: 376px) {
+    #logo {
+        width: 13%;
+    }
+}
+@media (max-width: 360px) {
+    #logo {
+        width: 20%;
+    }
+}

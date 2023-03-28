@@ -1,0 +1,7 @@
+{
+  "name": "smoothie-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
