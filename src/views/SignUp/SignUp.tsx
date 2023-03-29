@@ -3,34 +3,34 @@ import {
   IonHeader,
   IonPage,
   IonToolbar,
-  IonCard,
-  IonCardHeader,
-  IonCardContent,
-  IonCardTitle,
-  IonCardSubtitle,
   IonGrid,
   IonRow,
   IonCol,
   IonButton,
-  IonItem,
-  IonLabel,
   IonInput,
 } from "@ionic/react";
+import { useIonRouter } from "@ionic/react";
 import "./SignUp.css";
 
-const Login: React.FC = () => {
+
+const SignUp: React.FC = () => {
+  const router = useIonRouter();
+  // move to sign in page
+  const GoToSignIn = () => {
+    router.push("sign-in");
+  };
   return (
     <IonPage>
       {/* HEADER */}
       <IonHeader className="ion-padding-top ion-padding-end ion-text-right ion-no-border">
-        <IonToolbar>
+        {/* <IonToolbar>
           <IonButton className="signup-btn">
             <strong>Sign Up</strong>
           </IonButton>
-          <IonButton className="signin-btn" disabled={true}>
+          <IonButton className="signin-btn" onClick={() => GoToSignIn()}>
             <strong>Sign In</strong>
           </IonButton>
-        </IonToolbar>
+        </IonToolbar> */}
       </IonHeader>
 
       {/* BODY */}
@@ -67,7 +67,7 @@ const Login: React.FC = () => {
           </IonRow>
           <IonRow className="ion-text-end">
             <IonCol size="11">
-              <p>Already a member? <a href="#">Sign In.</a></p>
+              <p>Already a member? <a onClick={() => GoToSignIn()}>Sign In.</a></p>
             </IonCol>
           </IonRow>
         </IonGrid>
@@ -78,4 +78,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default SignUp;

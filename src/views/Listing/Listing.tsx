@@ -1,44 +1,45 @@
 import {
-  IonMenu,
   IonTitle,
   IonContent,
   IonHeader,
   IonPage,
   IonFooter,
   IonButtons,
-  IonButton,
-  IonMenuButton,
+  IonBadge,
   IonToolbar,
   IonIcon,
 } from "@ionic/react";
 import "./Listing.css";
 import {
-  personCircle
+  personCircleOutline,
+  cartOutline
 } from "ionicons/icons";
 
 const Home: React.FC = () => {
   return (
     <IonPage>
       <IonHeader className="header ion-no-border">
-        <IonToolbar>
-          <IonButtons slot="start">
-            {/* <IonIcon name="apps-outline"></IonIcon> */}
-            <IonMenuButton autoHide={false}></IonMenuButton>
-          </IonButtons>
-
-          <IonButtons slot="primary">
-            <IonIcon slot="icon-only" icon={personCircle}></IonIcon>
-          </IonButtons>
-
-          <IonTitle>Menu Button</IonTitle>
-        </IonToolbar>
+        
       </IonHeader>
 
       <IonContent fullscreen className="ion-text-center">
         <div></div>
       </IonContent>
 
-      <IonFooter className="ion-no-border"></IonFooter>
+      <IonFooter className="ion-no-border">
+      <IonToolbar>
+          <IonButtons slot="start">
+            <IonIcon slot="icon-only" icon={personCircleOutline}></IonIcon>
+          </IonButtons>
+
+          <IonButtons slot="primary">
+            <IonIcon slot="icon-only" icon={cartOutline}></IonIcon>
+            <IonBadge slot="start">11</IonBadge>
+          </IonButtons>
+
+          <IonTitle>Menu Button</IonTitle>
+        </IonToolbar>
+      </IonFooter>
     </IonPage>
   );
 };

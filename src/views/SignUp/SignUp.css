@@ -74,4 +74,5 @@ ion-col ion-button {
 
 ion-col a {
     color: #566a35;
+    text-decoration: underline;
 }

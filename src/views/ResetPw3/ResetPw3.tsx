@@ -7,43 +7,45 @@ import {
     IonRow,
     IonCol,
     IonButton,
+    IonButtons,
+    IonIcon,
     IonInput,
   } from "@ionic/react";
   import { useIonRouter } from "@ionic/react";
-  import "./SignIn.css";
+  import {
+    chevronBackOutline
+  } from "ionicons/icons";
+  import "./ResetPw3.css";
   
-  const SignIn: React.FC = () => {
+  const ResetPw3: React.FC = () => {
     const router = useIonRouter();
-  // move to sign up page
-  const GoToSignUp = () => {
-    router.push("sign-up");
-  };
-  // move to reset pw 
-  const ResetPw = () => {
-    router.push("reset-pw-1");
-  };
-
+    // move to next step
+    const NextStep = () => {
+        router.push("reset-pw-4");
+    };
+    // move back to listing
+    const Listing = () => {
+      router.push("listing");
+    };
     return (
       <IonPage>
         {/* HEADER */}
         <IonHeader className="ion-padding-top ion-padding-end ion-text-right ion-no-border">
-          {/* <IonToolbar>
-            <IonButton className="signup-btn" onClick={() => GoToSignUp()}>
-              <strong>Sign Up</strong>
-            </IonButton>
-            <IonButton className="signin-btn">
-              <strong>Sign In</strong>
-            </IonButton>
-          </IonToolbar> */}
+          <IonToolbar>
+          <IonButtons slot="start">
+            <IonIcon slot="icon-only" icon={chevronBackOutline} onClick={() => Listing()}></IonIcon>
+          </IonButtons>
+            
+          </IonToolbar>
         </IonHeader>
   
         {/* BODY */}
         <IonContent fullscreen>
         <IonGrid>
-          <IonRow>
-            <IonCol size="12" className="ion-text-center">
-              <h1>SIGN IN</h1>
-              <p>To Enjoy The Freshest!</p>
+          <IonRow className="ion-justify-content-center">
+            <IonCol size="10" className="ion-text-center">
+              <h3>NEW<br/>PASSWORD</h3>
+              <p>Your identity has been verified.<br/>Set your new password.</p>
             </IonCol>
           </IonRow>
         </IonGrid>
@@ -51,22 +53,17 @@ import {
         <IonGrid className="ion-margin-top">
           <IonRow className="ion-justify-content-center ion-margin-top">
             <IonCol size="10">
-                <IonInput placeholder="Email_" class="custom"></IonInput>
+                <IonInput placeholder="New Password_" class="custom"></IonInput>
             </IonCol>
           </IonRow>
           <IonRow className="ion-justify-content-center ion-margin-top">
             <IonCol size="10">
-                <IonInput placeholder="Password_" class="custom"></IonInput>
+                <IonInput placeholder="Confirm Password_" class="custom"></IonInput>
             </IonCol>
           </IonRow>
           <IonRow className="ion-text-end ion-margin-top">
             <IonCol size="11">
-              <IonButton>Sign In</IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow className="ion-text-end">
-            <IonCol size="11">
-              <a onClick={() => ResetPw()}>Forget password?</a>
+              <IonButton onClick={() => NextStep()}><strong>Next</strong></IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
@@ -77,5 +74,5 @@ import {
     );
   };
   
-  export default SignIn;
+  export default ResetPw3;
   

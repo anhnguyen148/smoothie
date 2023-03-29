@@ -9,19 +9,16 @@ import {
 } from "@ionic/react";
 import "./BranchList.css";
 import { useIonRouter } from "@ionic/react";
-import { useState } from "react";
 
 const BranchList: React.FC = () => {
-  let [isDisabled, setIsDisabled] = useState(true);
-
   const router = useIonRouter();
   // move to sign up page
   const GoToSignUp = () => {
-    router.push("sign-up");
+    router.push("/sign-up");
   };
   // move to sign in page
   const GoToSignIn = () => {
-    router.push("sign-in");
+    router.push("/sign-in");
   };
 
   return (
