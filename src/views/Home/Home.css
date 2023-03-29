@@ -1,7 +1,9 @@
-ion-content {
-    /* --background: #fff url('../../../public/assets/home.png') 0 0/100% 100% no-repeat; */
-    --background: #fbf8ee;
+ion-header, ion-footer {
+    --background-color: transparent;
+  }
 
+ion-content {
+    --background: #fbf8ee;
 }
 
 @media (max-width: 820px) {

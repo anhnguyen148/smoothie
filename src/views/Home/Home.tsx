@@ -2,12 +2,6 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
-  IonImg,
-  IonGrid,
-  IonRow,
-  IonCol,
   IonFooter,
 } from "@ionic/react";
 import { useEffect } from "react";

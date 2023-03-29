@@ -2,39 +2,63 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
-  IonCard,
-  IonCardHeader,
-  IonCardContent,
-  IonCardTitle,
-  IonCardSubtitle,
   IonGrid,
   IonRow,
+  IonCol,
+  IonButton,
 } from "@ionic/react";
 import "./BranchList.css";
+import { useIonRouter } from "@ionic/react";
+import { useState } from "react";
 
 const BranchList: React.FC = () => {
+  let [isDisabled, setIsDisabled] = useState(true);
 
-
+  const router = useIonRouter();
+  // move to sign up page
+  const GoToSignUp = () => {
+    router.push("sign-up");
+  };
+  // move to sign in page
+  const GoToSignIn = () => {
+    router.push("sign-in");
+  };
 
   return (
     <IonPage>
       {/* HEADER */}
-      <IonHeader className="ion-margin-bottom ion-text-center ion-no-border">
+      <IonHeader className="ion-text-center ion-no-border">
         <img className="store" src="/assets/branches.png" alt="choose store" />
       </IonHeader>
 
       {/* BODY */}
       <IonContent fullscreen>
-        <IonGrid className="ion-margin-top">
-          <IonRow>
-            <img className="store" src="/assets/florence.png" alt="florence store" />
+        <IonGrid>
+          <IonRow className="ion-text-end">
+            <IonCol size="11">
+              <IonButton className="signup-btn" onClick={() => GoToSignUp()}>
+                Sign Up
+              </IonButton>
+              <IonButton className="signin-btn" onClick={() => GoToSignIn()}>
+                Sign In
+              </IonButton>
+            </IonCol>
           </IonRow>
         </IonGrid>
-        <IonGrid className="ion-margin-top">
+        <IonGrid>
           <IonRow>
-            <img className="store" src="/assets/saigon.png" alt="saigon store" />
+            <img
+              className="store"
+              src="/assets/florence.png"
+              alt="florence store"
+            />
+          </IonRow>
+          <IonRow>
+            <img
+              className="store"
+              src="/assets/saigon.png"
+              alt="saigon store"
+            />
           </IonRow>
         </IonGrid>
       </IonContent>

@@ -3,6 +3,10 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './views/Home/Home';
 import BranchList from './views/BranchList/BranchList';
+import SignUp from './views/SignUp/SignUp';
+import SignIn from './views/SignIn/SignIn';
+import Registration from './views/Registration/Registration'
+import Listing from './views/Listing/Listing';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -29,9 +33,11 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
+
         <Route exact path="/home">
           <Home />
         </Route>
+
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
@@ -39,6 +45,23 @@ const App: React.FC = () => (
         <Route exact path="/branch-list">
           <BranchList />
         </Route>
+
+        <Route exact path="/registration">
+          <Registration />
+        </Route>
+
+        <Route exact path="/sign-up">
+          <SignUp />
+        </Route>
+
+        <Route exact path="/sign-in">
+          <SignIn />
+        </Route>
+
+        <Route exact path="/listing">
+          <Listing />
+        </Route>
+
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
