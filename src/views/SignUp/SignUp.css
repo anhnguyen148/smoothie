@@ -58,7 +58,7 @@ ion-input.custom {
     --padding-top: 10px;
 }
 
-ion-col ion-button {
+.resetBtn {
     --background: #f9cf00;
     --color: #566a35;
     --font-size: 400;

@@ -6,18 +6,6 @@ ion-content {
     --background: #fbf8ee;
 }
 
-.header {
-    padding: 1rem 1rem 0rem 1rem;
-}
-
 .avatar {
     width: 3rem;
 }
-
-ion-tab-bar {
-    position: relative;
-    border-radius: 0;
-    width: 40%;
-    margin: 10px 10px 10px auto;
-    border: solid 2px #000;
-  }

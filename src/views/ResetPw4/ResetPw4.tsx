@@ -42,7 +42,7 @@ import {
   
         {/* BODY */}
         <IonContent fullscreen>
-        <IonGrid>
+        <IonGrid className="resetPw">
           <IonRow className="ion-justify-content-center">
             <IonCol size="10" className="ion-text-center">
               <h3>PASSWORD<br/>UPDATED</h3>
@@ -50,21 +50,21 @@ import {
           </IonRow>
         </IonGrid>
 
-        <IonGrid className="ion-margin-top">
-          <IonRow className="ion-justify-content-center ion-margin-top">
+        <IonGrid>
+          <IonRow className="ion-justify-content-center">
             <IonCol size="10">
-              <p>fbaskf</p>
+            <img className="checked" src="/assets/complete.png" alt="reset password complete" />
             <IonIcon slot="icon-only" icon={chevronBackOutline}></IonIcon>
             </IonCol>
           </IonRow>
-          <IonRow className="ion-justify-content-center ion-margin-top">
-          <IonCol size="10" className="ion-text-center">
+          <IonRow className="ion-justify-content-center">
+            <IonCol size="10" className="ion-text-center">
               <p>Your password has been updated!</p>
             </IonCol>
           </IonRow>
           <IonRow className="ion-justify-content-center ion-text-center ion-margin-top">
             <IonCol size="10">
-              <IonButton onClick={() => NextStep()}><strong>Sign In</strong></IonButton>
+              <IonButton className="resetBtn" onClick={() => NextStep()}><strong>Sign In</strong></IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>

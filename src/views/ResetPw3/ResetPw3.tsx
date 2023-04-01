@@ -41,7 +41,7 @@ import {
   
         {/* BODY */}
         <IonContent fullscreen>
-        <IonGrid>
+        <IonGrid className="resetPw">
           <IonRow className="ion-justify-content-center">
             <IonCol size="10" className="ion-text-center">
               <h3>NEW<br/>PASSWORD</h3>
@@ -63,7 +63,7 @@ import {
           </IonRow>
           <IonRow className="ion-text-end ion-margin-top">
             <IonCol size="11">
-              <IonButton onClick={() => NextStep()}><strong>Next</strong></IonButton>
+              <IonButton className="resetBtn" onClick={() => NextStep()}><strong>Next</strong></IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>

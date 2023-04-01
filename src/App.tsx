@@ -10,7 +10,6 @@ import ResetPw2 from './views/ResetPw2/ResetPw2';
 import ResetPw3 from './views/ResetPw3/ResetPw3';
 import ResetPw4 from './views/ResetPw4/ResetPw4';
 import Listing from './views/Listing/Listing';
-import SignUpTab from './views/SignUpTab/SignUpTab';
 import Tab from './views/Tab/Tab';
 
 /* Core CSS required for Ionic components to work properly */
@@ -51,12 +50,10 @@ const App: React.FC = () => (
           <BranchList />
         </Route>
 
-        <Route exact path="/sign-up-tab">
-          <SignUpTab />
-        </Route>
         <Route exact path="/sign-up">
           <SignUp />
         </Route>
+
         <Route exact path="/sign-in">
           <SignIn />
         </Route>
@@ -64,12 +61,15 @@ const App: React.FC = () => (
         <Route exact path="/reset-pw-1">
           <ResetPw1 />
         </Route>
+
         <Route exact path="/reset-pw-2">
           <ResetPw2 />
         </Route>
+
         <Route exact path="/reset-pw-3">
           <ResetPw3 />
         </Route>
+
         <Route exact path="/reset-pw-4">
           <ResetPw4 />
         </Route>
@@ -77,6 +77,7 @@ const App: React.FC = () => (
         <Route exact path="/tab">
           <Tab />
         </Route>
+        
         <Route exact path="/listing">
           <Listing />
         </Route>

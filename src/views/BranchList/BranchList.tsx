@@ -20,6 +20,9 @@ const BranchList: React.FC = () => {
   const GoToSignIn = () => {
     router.push("/sign-in");
   };
+  const GoToListing =() => {
+    router.push("/listing");
+  };
 
   return (
     <IonPage>
@@ -47,7 +50,8 @@ const BranchList: React.FC = () => {
             <img
               className="store"
               src="/assets/florence.png"
-              alt="florence store"
+              alt="florence store"   
+              onClick={() => GoToListing()}           
             />
           </IonRow>
           <IonRow>
@@ -55,6 +59,7 @@ const BranchList: React.FC = () => {
               className="store"
               src="/assets/saigon.png"
               alt="saigon store"
+              onClick={() => GoToListing()}
             />
           </IonRow>
         </IonGrid>

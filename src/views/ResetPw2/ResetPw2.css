@@ -5,7 +5,7 @@ ion-content ion-grid ion-row h3 {
     margin-bottom: 0;
 }
 
-ion-col ion-button {
+.resetBtn {
     --background: #f9cf00;
     --color: #566a35;
     --font-size: 400;
@@ -17,4 +17,8 @@ ion-col ion-button {
     height: 35px;
     font-size: large;
     font-weight: 600;
+}
+
+.resetPw {
+    margin-top: 3rem;
 }

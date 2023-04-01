@@ -7,9 +7,12 @@ import {
     IonRow,
     IonCol,
     IonButton,
+    IonButtons,
+    IonIcon,
     IonInput,
   } from "@ionic/react";
   import { useIonRouter } from "@ionic/react";
+  import { chevronBackOutline } from "ionicons/icons";
   import "./SignIn.css";
   
   const SignIn: React.FC = () => {
@@ -22,19 +25,30 @@ import {
   const ResetPw = () => {
     router.push("reset-pw-1");
   };
+  // move back to listing
+  const Listing = () => {
+    router.push("listing");
+  };
 
     return (
       <IonPage>
         {/* HEADER */}
         <IonHeader className="ion-padding-top ion-padding-end ion-text-right ion-no-border">
-          {/* <IonToolbar>
+          <IonToolbar>
+          <IonButtons slot="start">
+            <IonIcon
+              slot="icon-only"
+              icon={chevronBackOutline}
+              onClick={() => Listing()}
+            ></IonIcon>
+          </IonButtons>
             <IonButton className="signup-btn" onClick={() => GoToSignUp()}>
               <strong>Sign Up</strong>
             </IonButton>
             <IonButton className="signin-btn">
               <strong>Sign In</strong>
             </IonButton>
-          </IonToolbar> */}
+          </IonToolbar>
         </IonHeader>
   
         {/* BODY */}
@@ -61,7 +75,7 @@ import {
           </IonRow>
           <IonRow className="ion-text-end ion-margin-top">
             <IonCol size="11">
-              <IonButton>Sign In</IonButton>
+              <IonButton className="resetBtn">Sign In</IonButton>
             </IonCol>
           </IonRow>
           <IonRow className="ion-text-end">

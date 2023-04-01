@@ -1,5 +1,5 @@
 ion-header, ion-footer, ion-toolbar {
-    --background-color: transparent;
+    --background: #fbf8ee;
   }
 
 ion-content {
@@ -10,21 +10,66 @@ ion-content {
     #logo {
         width: 10%;
     }
+    #field {
+        content: url(../../../public/assets/field-md.png);
+    }
+    .startBtnCol {
+        margin-top: 3rem;
+    }
 }
 
 @media (max-width: 600px) {
     #logo {
         width: 20%;
     }
+    #field {
+        content: url(../../../public/assets/field-md.png);
+    }
+    .startBtnCol {
+        margin-top: 3rem;
+    }
 }
 
+/* small screen  */
 @media (max-width: 376px) {
     #logo {
         width: 13%;
+    }
+    #field {
+        content: url(../../../public/assets/field-sm.png);
+    }
+    .startBtnCol {
+        margin-top: 16px;
     }
 }
 @media (max-width: 360px) {
     #logo {
         width: 20%;
     }
+    #field {
+        content: url(../../../public/assets/field-md.png);
+    }
+    .startBtnCol {
+        margin-top: 3rem;
+    }
+}
+
+#girl {
+    width: 70%;
+    margin: auto;
+    display: block;
+}
+
+.startBtn {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: 10rem;
+    color: #fff;
+    --border-color: #db6f01;
+    --background: #db6f01;
+    /* --background: #db6f01; */
+}
+
+#field-sm {
+    bottom: 0px;
 }
