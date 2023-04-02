@@ -38,9 +38,10 @@ const Home: React.FC = () => {
 
   return (
     <>
+    {/* SIDEMENU CONTENT */}
       <IonMenu contentId="main-content" side="end">
         <IonHeader className="menuHeader ion-no-border ion-margin">
-          <IonToolbar>
+          <IonToolbar className="toolBar">
               <p id="nameHeader">Good Morning,<br />Anh __</p>
           </IonToolbar>
         </IonHeader>
@@ -50,19 +51,10 @@ const Home: React.FC = () => {
       </IonMenu>
 
       <IonPage id="main-content">
+
         {/* HEADER  */}
         <IonHeader className="header ion-no-border">
-          <IonToolbar>
-
-            {/* <IonMenuToggle>
-                <IonButton>
-                  <IonIcon
-                    slot="icon-only"
-                    icon={personCircleOutline}
-                  ></IonIcon>
-                </IonButton>
-              </IonMenuToggle> */}
-
+          <IonToolbar className="mainToolbar ion-padding-top">
             <IonButtons slot="start">
               <img id="logo-sm" src="/assets/logo-sm.png" alt="logo" />
               <p id="name">Smoothie<br />Shop __</p>
@@ -127,7 +119,50 @@ const Home: React.FC = () => {
                 <h4>Drinks</h4>
               </IonCol>
             </IonRow>
+            
             <IonRow>
+              <IonCol size="6" className="ion-text-center">
+                <IonCard className="drinkCard">
+                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCard>
+              </IonCol>
+              <IonCol size="6" className="ion-text-center">
+                <IonCard className="drinkCard">
+                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCard>
+              </IonCol>
+              <IonCol size="6" className="ion-text-center">
+                <IonCard className="drinkCard">
+                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCard>
+              </IonCol>
+              <IonCol size="6" className="ion-text-center">
+                <IonCard className="drinkCard">
+                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCard>
+              </IonCol>
+              <IonCol size="6" className="ion-text-center">
+                <IonCard className="drinkCard">
+                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCard>
+              </IonCol>
+              <IonCol size="6" className="ion-text-center">
+                <IonCard className="drinkCard">
+                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCard>
+              </IonCol>
               <IonCol size="6" className="ion-text-center">
                 <IonCard className="drinkCard">
                   <img id="logo2" src="/assets/logo-sm.png" alt="logo" />

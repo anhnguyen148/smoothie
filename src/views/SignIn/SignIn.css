@@ -6,11 +6,11 @@
 }
 
 ion-header {
-    --background: transparent;
+    --background-color: #fbf8ee;;
 }
 
 ion-content {
-    --background: #fbf9ef;
+    --background-color: #fbf9ef;
 
 }
 

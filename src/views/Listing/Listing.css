@@ -1,6 +1,6 @@
 
 /* SIDEMENU CONTENT */
-.menuHeader {
+.menuHeader, ion-menu {
     --background-color: #fbf8ee;
 }
 
@@ -11,11 +11,25 @@
     margin: 0px;
 }
 
+.menu-inner {
+    background-color: #fbf8ee;
+}
+
+.toolBar {
+    background-color: #fbf8ee;
+}
+
 /* MAIN CONTENT */
 ion-header,
 ion-footer, 
 ion-content {
     --background-color: #fbf8ee;
+}
+
+ion-header {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .header {
