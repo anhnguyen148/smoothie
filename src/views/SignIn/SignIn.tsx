@@ -27,7 +27,7 @@ import {
   };
   // move back to listing
   const Listing = () => {
-    router.push("listing");
+    router.push("branch-list");
   };
 
     return (

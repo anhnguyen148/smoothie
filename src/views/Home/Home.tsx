@@ -29,7 +29,7 @@ const Home: React.FC = () => {
       <IonGrid>
           <IonRow>
             <IonCol size="12" className="ion-text-center ion-margin-top">
-              <img id="girl" src="/assets/home-girl.png" alt="branch girl"/> 
+              <img id="girl" src="/assets/home-girl1.png" alt="branch girl"/> 
             </IonCol>
           </IonRow>
           <IonRow>
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
       </IonContent>
 
       <IonFooter className="ion-no-border">        
-        <img id="field" src="/assets/field-sm.png" alt="footer img"/>      
+        {/* <img id="field" src="/assets/field-sm.png" alt="footer img"/>       */}
       </IonFooter>
     </IonPage>
   );

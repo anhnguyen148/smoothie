@@ -1,10 +1,21 @@
-ion-header,
-ion-footer {
+
+/* SIDEMENU CONTENT */
+.menuHeader {
     --background-color: #fbf8ee;
 }
 
+#nameHeader {
+    color: #db6f01;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 0px;
+}
+
+/* MAIN CONTENT */
+ion-header,
+ion-footer, 
 ion-content {
-    --background: #fbf8ee;
+    --background-color: #fbf8ee;
 }
 
 .header {
@@ -28,6 +39,10 @@ ion-col p {
     font-size: 1.3rem;
     font-weight: bolder;
     margin: 0px;
+}
+
+.menuBtn {
+    color: #000;
 }
 
 #searchCol {

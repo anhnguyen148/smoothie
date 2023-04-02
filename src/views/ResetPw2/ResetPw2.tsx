@@ -25,7 +25,7 @@ const ResetPw2: React.FC = () => {
     };
     // move back to listing
     const Listing = () => {
-      router.push("listing");
+      router.push("sign-in");
     };
   return (
     <IonPage>

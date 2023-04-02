@@ -1,54 +1,57 @@
-import { 
-  IonTabs, 
-  IonTabBar, 
-  IonTabButton, 
-  IonIcon, 
-  IonLabel,
-  IonBadge, 
-  IonRouterOutlet } from '@ionic/react';
-import { 
-  personCircleOutline,
-  cartOutline 
-} from 'ionicons/icons';
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenu,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonIcon,
+  IonMenuToggle,
+  IonButton,
+} from "@ionic/react";
+import { personCircleOutline } from "ionicons/icons";
 
-// import HomePage from './pages/HomePage';
-import Listing from '../Listing/Listing';
-// import LibraryPage from './pages/LibraryPage';
-// import SearchPage from './pages/SearchPage';
-
-import { IonReactRouter } from '@ionic/react-router';
-import { Route, Redirect } from 'react-router';
-import "./Tab.css";
 
 function Tab() {
   return (
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Redirect exact path="/" to="/home" />
-          {/* <Route path="/menu" render={() => <Menu />} exact={true} /> */}
-          <Route path="/listing" render={() => <Listing />} exact={true} />
-          {/* <Route path="/library" render={() => <LibraryPage />} exact={true} />
-          <Route path="/search" render={() => <SearchPage />} exact={true} /> */}
-        </IonRouterOutlet>
+    <>
+      <IonMenu contentId="main-content">
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Menu Content</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">
+          This is the menu content.
+        </IonContent>
+      </IonMenu>
 
-        <IonTabBar slot="top">
-          {/* <IonTabButton tab="menu" href="/menu">
-            <IonIcon icon={personCircleOutline} />
-          </IonTabButton>
+      <IonPage id="main-content">
 
-          <IonTabButton tab="listing" href="/listing">
-            <IonIcon icon={radio} />
-          </IonTabButton> */}
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons slot="end">
 
-          <IonTabButton tab="cart" href="/cart">
-            <IonIcon icon={cartOutline} />            
-            <IonBadge slot="start">11</IonBadge>
-          </IonTabButton>
+              <IonMenuToggle>
+                <IonButton>
+                  <IonIcon
+                    slot="icon-only"
+                    icon={personCircleOutline}
+                  ></IonIcon>
+                </IonButton>
+              </IonMenuToggle>
 
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
+
+        <IonContent className="ion-padding">
+          Tap the button in the toolbar to open the menu.
+        </IonContent>
+      </IonPage>
+    </>
   );
 }
 export default Tab;
