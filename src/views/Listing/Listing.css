@@ -19,6 +19,28 @@
     background-color: #fbf8ee;
 }
 
+.listItem {
+    --ion-item-background:#fbf8ee;
+    margin: 0px;
+}
+
+.listItem {
+    --inner-padding-end: 0px;
+}
+
+#menuBackBtn1, #menuBackBtn2, #menuBackBtn3, #menuBackBtn4, #menuBackBtn5, #menuBackBtn6 {
+    color: #db6f01;
+    font-size: 24px;
+}
+
+#signOutBtn {
+    width: 5rem;
+    height: 2rem;
+    color: white;
+    font-size: medium;   
+    background: #db6f01;
+}
+
 /* MAIN CONTENT */
 ion-header,
 ion-footer, 

@@ -2,67 +2,125 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonFooter,
   IonButtons,
-  IonBadge,
   IonToolbar,
   IonIcon,
   IonRow,
   IonCol,
   IonGrid,
   IonSearchbar,
-  IonInfiniteScroll,
   IonCard,
   IonCardTitle,
   IonButton,
   IonCardSubtitle,
-  IonSplitPane,
   IonMenu,
-  IonTitle,
   IonMenuToggle,
-  IonMenuButton,
   IonList,
   IonItem,
   IonLabel,
 } from "@ionic/react";
 import "./Listing.css";
-import { personCircleOutline, cartOutline } from "ionicons/icons";
+import { personCircleOutline, bagOutline, chevronForwardOutline } from "ionicons/icons";
 import { useIonRouter } from "@ionic/react";
 
 const Home: React.FC = () => {
   const router = useIonRouter();
-    // move to cart
-    const GoToCart = () => {
-      router.push("/cart");
-    };
+  // move to cart
+  const GoToCart = () => {
+    router.push("/cart");
+  };
 
   return (
     <>
-    {/* SIDEMENU CONTENT */}
+      {/* SIDEMENU CONTENT */}
       <IonMenu contentId="main-content" side="end">
-        <IonHeader className="menuHeader ion-no-border ion-margin">
-          <IonToolbar className="toolBar">
-              <p id="nameHeader">Good Morning,<br />Anh __</p>
-          </IonToolbar>
-        </IonHeader>
+        {/* <IonHeader className="menuHeader ion-no-border ion-margin">
+          
+        </IonHeader> */}
         <IonContent className="ion-padding">
-          <p>abc</p>
+        <IonToolbar className="toolBar">
+            <p id="nameHeader">
+              Good Morning,
+              <br />
+              Anh __
+            </p>
+          </IonToolbar>
+          <IonList lines="full">
+            <IonItem className="listItem ion-no-padding">
+              <IonLabel>Personal Info</IonLabel>
+              <IonButtons className="ion-no-padding ion-no-margin" slot="end">
+                <IonIcon id="menuBackBtn1"
+                  slot="icon-only"
+                  icon={chevronForwardOutline}
+                ></IonIcon>
+              </IonButtons>
+            </IonItem>
+            <IonItem className="listItem ion-no-padding">
+              <IonLabel>Change store</IonLabel>
+              <IonButtons className="ion-no-padding ion-no-margin" slot="end">
+                <IonIcon id="menuBackBtn2"
+                  slot="icon-only"
+                  icon={chevronForwardOutline}
+                ></IonIcon>
+              </IonButtons>
+            </IonItem>
+            <IonItem className="listItem ion-no-padding">
+              <IonLabel>Cards & Payment</IonLabel>
+              <IonButtons className="ion-no-padding ion-no-margin" slot="end">
+                <IonIcon id="menuBackBtn3"
+                  slot="icon-only"
+                  icon={chevronForwardOutline}
+                ></IonIcon>
+              </IonButtons>
+            </IonItem>
+            <IonItem className="listItem ion-no-padding">
+              <IonLabel>Transaction history</IonLabel>
+              <IonButtons className="ion-no-padding ion-no-margin" slot="end">
+                <IonIcon id="menuBackBtn4"
+                  slot="icon-only"
+                  icon={chevronForwardOutline}
+                ></IonIcon>
+              </IonButtons>
+            </IonItem>
+            <IonItem className="listItem ion-no-padding">
+              <IonLabel>Delete account</IonLabel>
+              <IonButtons className="ion-no-padding ion-no-margin" slot="end">
+                <IonIcon id="menuBackBtn5"
+                  slot="icon-only"
+                  icon={chevronForwardOutline}
+                ></IonIcon>
+              </IonButtons>
+            </IonItem>
+          </IonList>
+          <IonGrid className="ion-padding-top">
+            <IonRow>
+              <button id="signOutBtn">Sign out</button>
+            </IonRow>
+          </IonGrid>
+          
         </IonContent>
       </IonMenu>
 
       <IonPage id="main-content">
-
         {/* HEADER  */}
-        <IonHeader className="header ion-no-border">
-          <IonToolbar className="mainToolbar ion-padding-top">
+        <IonHeader className="ion-text-center ion-no-border">
+          <IonToolbar className="ion-padding-top">
             <IonButtons slot="start">
               <img id="logo-sm" src="/assets/logo-sm.png" alt="logo" />
-              <p id="name">Smoothie<br />Shop __</p>
+              <p id="name">
+                Smoothie
+                <br />
+                Shop __
+              </p>
             </IonButtons>
 
             <IonButtons slot="primary">
               <IonButton onClick={() => GoToCart()}>
-                <IonIcon className="menuBtn" slot="icon-only" icon={cartOutline}></IonIcon>
+                <IonIcon
+                  className="menuBtn"
+                  slot="icon-only"
+                  icon={bagOutline}
+                ></IonIcon>
                 {/* <IonBadge slot="start">11</IonBadge> */}
               </IonButton>
             </IonButtons>
@@ -70,7 +128,11 @@ const Home: React.FC = () => {
             <IonButtons slot="end">
               <IonMenuToggle>
                 <IonButton>
-                  <IonIcon className="menuBtn" slot="icon-only" icon={personCircleOutline}></IonIcon>
+                  <IonIcon
+                    className="menuBtn"
+                    slot="icon-only"
+                    icon={personCircleOutline}
+                  ></IonIcon>
                 </IonButton>
               </IonMenuToggle>
             </IonButtons>
@@ -87,7 +149,6 @@ const Home: React.FC = () => {
               </IonCol>
             </IonRow>
           </IonGrid>
-
           {/* Categories */}
           <IonGrid className="contentGrid">
             <IonRow>
@@ -119,50 +180,8 @@ const Home: React.FC = () => {
                 <h4>Drinks</h4>
               </IonCol>
             </IonRow>
-            
+
             <IonRow>
-              <IonCol size="6" className="ion-text-center">
-                <IonCard className="drinkCard">
-                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCard>
-              </IonCol>
-              <IonCol size="6" className="ion-text-center">
-                <IonCard className="drinkCard">
-                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCard>
-              </IonCol>
-              <IonCol size="6" className="ion-text-center">
-                <IonCard className="drinkCard">
-                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCard>
-              </IonCol>
-              <IonCol size="6" className="ion-text-center">
-                <IonCard className="drinkCard">
-                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCard>
-              </IonCol>
-              <IonCol size="6" className="ion-text-center">
-                <IonCard className="drinkCard">
-                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCard>
-              </IonCol>
-              <IonCol size="6" className="ion-text-center">
-                <IonCard className="drinkCard">
-                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCard>
-              </IonCol>
               <IonCol size="6" className="ion-text-center">
                 <IonCard className="drinkCard">
                   <img id="logo2" src="/assets/logo-sm.png" alt="logo" />

@@ -17,7 +17,7 @@ import {
   IonFooter,
 } from "@ionic/react";
 import "./Cart.css";
-import { chevronBackOutline } from "ionicons/icons";
+import { chevronBackOutline, addCircleOutline, removeCircleOutline } from "ionicons/icons";
 import { useIonRouter } from "@ionic/react";
 
 const BranchList: React.FC = () => {
@@ -70,7 +70,24 @@ const BranchList: React.FC = () => {
                             <h5>Strawberry Pink Dream</h5>
                         </IonCardHeader>
                         <IonCardContent className="price">
-                            <p>$7.49</p>
+                          <IonRow>
+                            <IonCol>
+                              <p>$7.49</p>
+                            </IonCol>
+                            <IonCol>
+                              <IonRow className="ion-text-center">
+                                <IonCol className="ion-no-padding">
+                                  <p><IonIcon className="addRemoveBtn" slot="icon-only" icon={addCircleOutline} onClick={() => Listing()}></IonIcon></p>
+                                </IonCol>
+                                <IonCol className="ion-no-padding">
+                                  <p><strong>1</strong></p>
+                                </IonCol>
+                                <IonCol className="ion-no-padding">
+                                  <p><IonIcon className="addRemoveBtn" slot="icon-only" icon={removeCircleOutline} onClick={() => Listing()}></IonIcon></p>
+                                </IonCol>
+                              </IonRow>
+                            </IonCol>
+                          </IonRow>
                         </IonCardContent>                           
                     </IonCol>
                 </IonRow>
@@ -85,7 +102,24 @@ const BranchList: React.FC = () => {
                             <h5>Tropical Breeze</h5>
                         </IonCardHeader>
                         <IonCardContent className="price">
-                            <p>$8.49</p>
+                          <IonRow>
+                            <IonCol>
+                              <p>$8.49</p>
+                            </IonCol>
+                            <IonCol>
+                              <IonRow className="ion-text-center">
+                                <IonCol className="ion-no-padding">
+                                  <p><IonIcon className="addRemoveBtn" slot="icon-only" icon={addCircleOutline} onClick={() => Listing()}></IonIcon></p>
+                                </IonCol>
+                                <IonCol className="ion-no-padding">
+                                  <p><strong>1</strong></p>
+                                </IonCol>
+                                <IonCol className="ion-no-padding">
+                                  <p><IonIcon className="addRemoveBtn" slot="icon-only" icon={removeCircleOutline} onClick={() => Listing()}></IonIcon></p>
+                                </IonCol>
+                              </IonRow>
+                            </IonCol>
+                          </IonRow> 
                         </IonCardContent>                           
                     </IonCol>
                 </IonRow>
@@ -191,7 +225,7 @@ const BranchList: React.FC = () => {
               <p id="totalBtn">Total: $15.89</p>
             </IonCol>
             <IonCol>
-              <IonButton id="checkOutBtn">Check Out</IonButton>
+              <button id="checkOutBtn">Check Out</button>
             </IonCol>
           </IonRow>
         </IonGrid>

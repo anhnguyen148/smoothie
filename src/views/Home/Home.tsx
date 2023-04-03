@@ -34,9 +34,9 @@ const Home: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol size="12" className="startBtnCol ion-text-center">
-              <IonButton className="startBtn ion-margin-top" onClick={() => GoToBranchesList()}>
-                <strong>Get Started!</strong>
-              </IonButton>
+              <button id="startBtn ion-margin-top" onClick={() => GoToBranchesList()}>
+                <strong>GET STARTED!</strong>
+              </button>
             </IonCol>
           </IonRow>
         </IonGrid>        

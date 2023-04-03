@@ -60,13 +60,15 @@ ion-content {
     display: block;
 }
 
-.startBtn {
+.startBtnCol button {
     letter-spacing: 0.08em;
-    text-transform: uppercase;
-    width: 10rem;
+    width: 9rem;
+    height: 2.5rem;
+    font-size: 0.9rem;
     color: #fff;
     --border-color: #db6f01;
-    --background: #db6f01;
+    background: #db6f01;
+    --border-radius: 0px;
     /* --background: #db6f01; */
 }
 

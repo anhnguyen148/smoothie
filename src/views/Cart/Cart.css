@@ -47,21 +47,29 @@ ion-toolbar {
     margin: 10px 0px;
 }
 
+.addRemoveBtn {
+    font-size: 22px;
+}
+
 .cartFooter {
-    background-color: #e07e1d; 
+    background-color: #e07e1d;
+    padding: 0.5rem 0rem; 
 }
 
 #totalBtn {
     color: #fff;
     font-size: larger;
-    padding-top: 20px;
+    padding-top: 15px;
     --background: #e07e1d; 
 }
 
 #checkOutBtn {
+    width: 8rem;
+    height: 3rem;
     color: #db6f01;
     font-size: larger;
     font-weight: bold;
-    --background: #fff;
-    /* --border-radius: 0px; */
+    border: solid 1px white;
+    background: #fff;
+    --border-radius: 0px;
 }
