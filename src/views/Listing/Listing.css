@@ -126,7 +126,7 @@ ion-col p {
 
 .categoryBtn:after {
     content: "";
-    background-color: #deecb9;
+    background-color: #ffd6b8;
     width: 100%;
     z-index: -1;
     position: absolute;

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   IonContent,
   IonHeader,
@@ -22,18 +23,27 @@ import {
 import "./Listing.css";
 import { personCircleOutline, bagOutline, chevronForwardOutline } from "ionicons/icons";
 import { useIonRouter } from "@ionic/react";
+import { useEffect } from "react";
+import axios from 'axios';
 
-const Home: React.FC = () => {
+const Listing: React.FC = () => {
   const router = useIonRouter();
+  const menuRef = React.useRef<HTMLIonMenuElement>(null);
   // move to cart
   const GoToCart = () => {
     router.push("/cart");
   };
 
+  const UserInfo = () => {
+    //close sidemenu when change path
+    menuRef.current?.close()
+    router.push("/user-info");
+  }
+
   return (
     <>
       {/* SIDEMENU CONTENT */}
-      <IonMenu contentId="main-content" side="end">
+      <IonMenu ref={menuRef} contentId="main-content" side="end">
         {/* <IonHeader className="menuHeader ion-no-border ion-margin">
           
         </IonHeader> */}
@@ -46,7 +56,7 @@ const Home: React.FC = () => {
             </p>
           </IonToolbar>
           <IonList lines="full">
-            <IonItem className="listItem ion-no-padding">
+            <IonItem className="listItem ion-no-padding" onClick={() => UserInfo()}>
               <IonLabel>Personal Info</IonLabel>
               <IonButtons className="ion-no-padding ion-no-margin" slot="end">
                 <IonIcon id="menuBackBtn1"
@@ -167,11 +177,6 @@ const Home: React.FC = () => {
                   Juice
                 </div>
               </IonCol>
-              <IonCol size="5" className="ion-text-center">
-                <div className="categoryBtn" role="button">
-                  Vegan
-                </div>
-              </IonCol>
             </IonRow>
 
             {/* Drinks Menu */}
@@ -182,11 +187,14 @@ const Home: React.FC = () => {
             </IonRow>
 
             <IonRow>
+              
               <IonCol size="6" className="ion-text-center">
                 <IonCard className="drinkCard">
-                  <img id="logo2" src="/assets/logo-sm.png" alt="logo" />
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                  <img id="logo2" src="/assets/cherry.png" alt="logo" />
+                  {/* <IonCardTitle>Cherry Smoothie</IonCardTitle> */}
+                  <IonLabel>Plum Smoothie</IonLabel>
+                  {/* <h5 className="ion-no-padding">Cherry Smoothie</h5> */}
+                  <IonCardSubtitle>$8.49</IonCardSubtitle>
                 </IonCard>
               </IonCol>
             </IonRow>
@@ -197,4 +205,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Listing;

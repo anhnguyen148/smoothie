@@ -10,6 +10,7 @@ import ResetPw2 from './views/ResetPw2/ResetPw2';
 import ResetPw3 from './views/ResetPw3/ResetPw3';
 import ResetPw4 from './views/ResetPw4/ResetPw4';
 import Listing from './views/Listing/Listing';
+import UserInfo from './views/UserInfo/UserInfo';
 import Cart from './views/Cart/Cart'
 import Tab from './views/Tab/Tab';
 
@@ -77,6 +78,9 @@ const App: React.FC = () => (
         
         <Route exact path="/listing">
           <Listing />
+        </Route>
+        <Route exact path="/user-info">
+          <UserInfo />
         </Route>
 
         <Route exact path="/cart">
