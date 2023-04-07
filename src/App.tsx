@@ -11,8 +11,9 @@ import ResetPw3 from './views/ResetPw3/ResetPw3';
 import ResetPw4 from './views/ResetPw4/ResetPw4';
 import Listing from './views/Listing/Listing';
 import UserInfo from './views/UserInfo/UserInfo';
-import Cart from './views/Cart/Cart'
-import Tab from './views/Tab/Tab';
+import Payment from './views/Payment/Payment';
+import ChangePw from './views/ChangePw/ChangePw'
+import Cart from './views/Cart/Cart';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -82,13 +83,15 @@ const App: React.FC = () => (
         <Route exact path="/user-info">
           <UserInfo />
         </Route>
+        <Route exact path="/payment">
+          <Payment />
+        </Route>
+        <Route exact path="/change-pw">
+          <ChangePw />
+        </Route>
 
         <Route exact path="/cart">
           <Cart />
-        </Route>
-
-        <Route exact path="/tab">
-          <Tab />
         </Route>
 
       </IonRouterOutlet>

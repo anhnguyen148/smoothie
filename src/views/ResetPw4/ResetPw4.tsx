@@ -64,7 +64,7 @@ import {
           </IonRow>
           <IonRow className="ion-justify-content-center ion-text-center ion-margin-top">
             <IonCol size="10">
-              <IonButton className="resetBtn" onClick={() => NextStep()}><strong>Sign In</strong></IonButton>
+              <button className="signOutBtn" onClick={() => NextStep()}><strong>Sign In</strong></button>
             </IonCol>
           </IonRow>
         </IonGrid>

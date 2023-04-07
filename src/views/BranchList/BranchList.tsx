@@ -26,15 +26,21 @@ const BranchList: React.FC = () => {
 
   return (
     <IonPage>
-      {/* HEADER */}
-      <IonHeader className="ion-text-center ion-no-border">
-        <img className="store" src="/assets/branches.png" alt="choose store" />
-      </IonHeader>
-
-      {/* BODY */}
       <IonContent fullscreen>
         <IonGrid>
-          <IonRow className="ion-text-end">
+          <IonRow>
+          <img className="store" src="/assets/branches.png" alt="choose store" />
+          </IonRow>
+          <IonRow className="ion-text-center">
+            <IonCol></IonCol>
+            <IonCol>
+              <button className="signOutBtn" onClick={() => GoToSignUp()}>Sign Up</button>
+            </IonCol>
+            <IonCol>
+              <button className="signOutBtn" onClick={() => GoToSignIn()}>Sign In</button>
+            </IonCol>           
+          </IonRow>
+          {/* <IonRow className="ion-text-end">
             <IonCol size="11">
               <IonButton className="signup-btn" onClick={() => GoToSignUp()}>
                 Sign Up
@@ -43,7 +49,7 @@ const BranchList: React.FC = () => {
                 Sign In
               </IonButton>
             </IonCol>
-          </IonRow>
+          </IonRow> */}
         </IonGrid>
         <IonGrid>
           <IonRow>

@@ -28,24 +28,25 @@
     --inner-padding-end: 0px;
 }
 
-#menuBackBtn1, #menuBackBtn2, #menuBackBtn3, #menuBackBtn4, #menuBackBtn5, #menuBackBtn6 {
+/* #menuBackBtn1, #menuBackBtn2, #menuBackBtn3, #menuBackBtn4, #menuBackBtn5, #menuBackBtn6 {
     color: #db6f01;
     font-size: 24px;
-}
+} */
 
-#signOutBtn {
+.signOutBtn {
     width: 5rem;
     height: 2rem;
     color: white;
     font-size: medium;   
     background: #db6f01;
+    border-radius: 5px;
 }
 
 /* MAIN CONTENT */
 ion-header,
 ion-footer, 
 ion-content {
-    --background-color: #fbf8ee;
+    background: #fbf8ee;
 }
 
 ion-header {
@@ -105,20 +106,33 @@ ion-col p {
 
 .drinkCard {
     box-shadow: none;
-    /* --background: #db6f01; */
+    border: solid 1.5px #ffc88a;
+    border-radius: 10px;
+    margin: 0.5rem;
+    z-index: -1;
+    --background: #fae5ce;
+}
+
+.drinkDetails {
+    color: #273f00;
+    /* color: #7c3e00; */
+    background: #ffc88a;
+    padding: 5px;
 }
 
 .categoryBtn {
+    color: #fff;
     width: 7.5rem;
     font-size: 16px;
     font-weight: 200;
     letter-spacing: 1px;
     padding: 13px 20px 13px;
     outline: 0;
-    border: 1.8px solid black;
+    border-radius: 5px;
+    border: 1.8px solid #273f00;
     cursor: pointer;
     position: relative;
-    background-color: rgba(0, 0, 0, 0);
+    /* background-color: rgba(0, 0, 0, 0); */
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
@@ -126,7 +140,8 @@ ion-col p {
 
 .categoryBtn:after {
     content: "";
-    background-color: #ffd6b8;
+    background-color: #fb9834;
+    border-radius: 5px;
     width: 100%;
     z-index: -1;
     position: absolute;
@@ -145,4 +160,55 @@ ion-col p {
     .categoryBtn {
         padding: 13px 50px 13px;
     }
+}
+
+.addToCartBtn {
+    /* width: 3rem;
+    height: 2rem; */
+    color: #db6f01;
+    font-size: 2rem;
+    margin: -5px 55px;
+    position: absolute;
+    /* background: #db6f01;
+    border-radius: 5px; */
+}
+
+/* MODAL */
+.drinkImgCardModal {
+    background: #fbf8ee;
+}
+
+.drinkImg {
+    width: 90%;
+}
+
+.drinkCardModal {
+    /* height: 10rem; */
+    font-size: medium;
+    box-shadow: none;
+    border-radius: 30px;
+    border: solid 1.5px #db6f01;
+    background: #ffe5ca;
+    margin: 0px;
+    justify-content: flex-end;
+}
+
+.drinkLabelModal {
+    font-size: 1.5rem;
+    /* font-weight: bold; */
+    color: #273f00;
+}
+
+.addRemoveBtnModal {
+    color: #db6f01;
+    font-size: 1.7rem;
+}
+
+.addCartBtnModal {
+    color: white;
+    font-size: larger;
+    background-color: #db6f01;
+    height: 3rem;
+    width: 20rem;
+    border-radius: 20px;
 }

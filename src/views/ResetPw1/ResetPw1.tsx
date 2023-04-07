@@ -66,9 +66,9 @@ const ResetPw1: React.FC = () => {
           </IonRow>
           <IonRow className="ion-text-end ion-margin-top">
             <IonCol size="11">
-              <IonButton className="resetBtn" onClick={() => NextStep()}>
+              <button className="signOutBtn" onClick={() => NextStep()}>
                 <strong>Next</strong>
-              </IonButton>
+              </button>
             </IonCol>
           </IonRow>
         </IonGrid>

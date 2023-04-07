@@ -27,13 +27,12 @@ ion-toolbar {
     margin: 0px;
 }
 
-.itemCard {
-    box-shadow: none;
-    border-radius: 0px;
-    --background: transparent;
-}
-
 .itemImgCard {
+    box-shadow: none;
+    border: solid 1.5px #ffc88a;
+    border-radius: 10px;
+    margin: 0.5rem;
+    --background: #fae5ce;
     margin: 0px;
 }
 
@@ -71,5 +70,5 @@ ion-toolbar {
     font-weight: bold;
     border: solid 1px white;
     background: #fff;
-    --border-radius: 0px;
+    border-radius: 5px;
 }

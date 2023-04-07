@@ -21,12 +21,15 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader className="ion-text-center ion-no-border">
+      {/* <IonHeader className="ion-text-center ion-no-border">
         <img id="logo" src="/assets/logo.png" alt="logo"/>
-      </IonHeader>
+      </IonHeader> */}
 
       <IonContent fullscreen className="ion-text-center">
       <IonGrid>
+        <IonRow className="ion-text-center">
+          <img id="logo" src="/assets/logo.png" alt="logo"/>          
+        </IonRow>
           <IonRow>
             <IonCol size="12" className="ion-text-center ion-margin-top">
               <img id="girl" src="/assets/home-girl1.png" alt="branch girl"/> 

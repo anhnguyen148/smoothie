@@ -37,13 +37,15 @@ const SignUp: React.FC = () => {
               onClick={() => Listing()}
             ></IonIcon>
           </IonButtons>
-
-          <IonButton className="signup-btn">
-            <strong>Sign Up</strong>
-          </IonButton>
-          <IonButton className="signin-btn" onClick={() => GoToSignIn()}>
-            <strong>Sign In</strong>
-          </IonButton>
+          <IonRow>
+          <IonCol></IonCol>
+            <IonCol>
+              <button className="signOutBtn">Sign Up</button>
+            </IonCol>
+            <IonCol>
+              <button className="signOutBtn" onClick={() => GoToSignIn()}>Sign In</button>
+            </IonCol>
+          </IonRow>
         </IonToolbar>
       </IonHeader>
 
@@ -76,7 +78,7 @@ const SignUp: React.FC = () => {
           </IonRow>
           <IonRow className="ion-text-end ion-margin-top">
             <IonCol size="11">
-              <IonButton className="resetBtn">Sign Up</IonButton>
+              <button className="signOutBtn">Sign Up</button>
             </IonCol>
           </IonRow>
           <IonRow className="ion-text-end">

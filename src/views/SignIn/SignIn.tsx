@@ -42,12 +42,15 @@ const SignIn: React.FC = () => {
               onClick={() => BranchList()}
             ></IonIcon>
           </IonButtons>
-          <IonButton className="signup-btn" onClick={() => GoToSignUp()}>
-            <strong>Sign Up</strong>
-          </IonButton>
-          <IonButton className="signin-btn">
-            <strong>Sign In</strong>
-          </IonButton>
+          <IonRow>
+            <IonCol></IonCol>
+            <IonCol>
+              <button className="signOutBtn" onClick={() => GoToSignUp()}>Sign Up</button>
+            </IonCol>
+            <IonCol>
+              <button className="signOutBtn">Sign In</button>
+            </IonCol>
+          </IonRow>
         </IonToolbar>
       </IonHeader>
 
@@ -75,7 +78,7 @@ const SignIn: React.FC = () => {
           </IonRow>
           <IonRow className="ion-text-end ion-margin-top">
             <IonCol size="11">
-              <IonButton className="resetBtn">Sign In</IonButton>
+            <button className="signOutBtn">Sign In</button>
             </IonCol>
           </IonRow>
           <IonRow className="ion-text-end">
