@@ -81,7 +81,7 @@ const Listing: React.FC = () => {
             </IonItem>
             <IonItem
               className="listItem ion-no-padding"
-              routerLink="/branch-list"
+              routerLink="/change-store"
               onClick={() => closeSideMenu()}
             >
               <IonLabel>Change store</IonLabel>
@@ -95,7 +95,7 @@ const Listing: React.FC = () => {
             </IonItem>
             <IonItem
               className="listItem ion-no-padding"
-              routerLink="/user-info"
+              routerLink="/transaction"
               onClick={() => closeSideMenu()}
             >
               <IonLabel>Transaction history</IonLabel>

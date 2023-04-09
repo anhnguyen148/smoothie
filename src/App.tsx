@@ -12,7 +12,9 @@ import ResetPw4 from './views/ResetPw4/ResetPw4';
 import Listing from './views/Listing/Listing';
 import UserInfo from './views/UserInfo/UserInfo';
 import Payment from './views/Payment/Payment';
-import ChangePw from './views/ChangePw/ChangePw'
+import Transaction from './views/Transaction/Transaction';
+import ChangeStore from './views/ChangeStore/ChangeStore';
+import ChangePw from './views/ChangePw/ChangePw';
 import Cart from './views/Cart/Cart';
 
 /* Core CSS required for Ionic components to work properly */
@@ -88,6 +90,12 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/change-pw">
           <ChangePw />
+        </Route>
+        <Route exact path="/transaction">
+          <Transaction />
+        </Route>
+        <Route exact path="/change-store">
+          <ChangeStore />
         </Route>
 
         <Route exact path="/cart">

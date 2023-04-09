@@ -40,16 +40,6 @@ const BranchList: React.FC = () => {
               <button className="signOutBtn" onClick={() => GoToSignIn()}>Sign In</button>
             </IonCol>           
           </IonRow>
-          {/* <IonRow className="ion-text-end">
-            <IonCol size="11">
-              <IonButton className="signup-btn" onClick={() => GoToSignUp()}>
-                Sign Up
-              </IonButton>
-              <IonButton className="signin-btn" onClick={() => GoToSignIn()}>
-                Sign In
-              </IonButton>
-            </IonCol>
-          </IonRow> */}
         </IonGrid>
         <IonGrid>
           <IonRow>
