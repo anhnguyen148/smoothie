@@ -49,7 +49,7 @@ class Employee(Base):
     employee_id = Column(INTEGER(11), primary_key=True)
     name = Column(String(30))
     email = Column(String(20))
-    phone = Column(BIGINT(20))
+    phone = Column(String(20))
     username = Column(String(20))
     password = Column(String(50))
     address = Column(String(40))

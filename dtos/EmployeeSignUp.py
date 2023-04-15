@@ -8,3 +8,7 @@ class EmployeeSignupDTO(BaseModel):
     password: str
     address: str
     branchId: int
+
+class EmployeeSigninDTO(BaseModel):
+    username: str
+    password: str
