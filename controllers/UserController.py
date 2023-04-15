@@ -1,5 +1,6 @@
 from fastapi import APIRouter, status, HTTPException
 from fastapi.responses import RedirectResponse
+from dtos.Auth import EmployeeOut
 from models.Models import Employee
 from dtos.EmployeeSignUp import EmployeeSignupDTO, EmployeeSigninDTO
 from dtos.APIResponse import APIResponse
@@ -14,6 +15,8 @@ from helpers.JwtHelper import (
     createRefreshToken,
     
 )
+from fastapi import Depends
+from helpers.JwtHelper import getCurrentEmployee
 
 userRouter = APIRouter()
 
@@ -34,7 +37,7 @@ async def createEmployee(newEmployeeInfo: EmployeeSignupDTO):
     dbSession.add(newEmployee)
     dbSession.commit()
 
-    return APIResponse().successResponse("New employee is registered successfully!", jsonable_encoder(newEmployee))
+    return APIResponse().successResponse("New employee is registered successfully!", newEmployee)
 
 @userRouter.post("/employee/login")
 async def login(employeeSigninInfo: EmployeeSigninDTO):
@@ -43,15 +46,19 @@ async def login(employeeSigninInfo: EmployeeSigninDTO):
 
     targetUser = Employee.query.filter(eUsername == Employee.username).first()
 
-    print("Here", targetUser.password)
-
     if (verifyPassword(ePassword, targetUser.password)):
-        print("ok")
+        responseBody = {
+            "access_token": createAccessToken(targetUser.username),
+            "refresh_token": createRefreshToken(targetUser.username),
+        }
+        return APIResponse().successResponse("Login successfully!", responseBody)    
+    else:
+        responseBody = None
+        return APIResponse().successResponse("Your username and password is incorrect!", responseBody)
     
 
-    responseBody = {
-        "access_token": createAccessToken(targetUser.email),
-        "refresh_token": createRefreshToken(targetUser.email),
-    }
+@userRouter.get('/me', summary='Get details of currently logged in user', response_model=EmployeeOut)
+async def getEmployee(employee: Employee = Depends(getCurrentEmployee)):
+    return employee
 
-    return APIResponse().successResponse("here is your token", responseBody)    
+    

@@ -8,4 +8,4 @@ drinkRouter = APIRouter()
 @drinkRouter.get("/drinks")
 async def getAllDrink():
     drinks = Drink.query.all()
-    return APIResponse().successResponse("Here is the list of drinks.", jsonable_encoder(drinks))
+    return APIResponse().successResponse("Here is the list of drinks.", drinks)
