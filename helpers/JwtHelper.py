@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from models.Models import Employee
 from pydantic import ValidationError
 from fastapi import Depends, HTTPException, status
-from dtos.APIResponse import APIResponse
+from dtos.APIResponseDTO import APIResponseDTO
 from fastapi.encoders import jsonable_encoder
 from fastapi.security import OAuth2PasswordBearer
 
@@ -55,24 +55,26 @@ reusableOauth = OAuth2PasswordBearer(
 
 
 async def getCurrentEmployee(token: str = Depends(reusableOauth)):
+    try:
+        payload = jwt.decode(
+            token, os.getenv("JWT_SECRET_KEY"), algorithms=[os.getenv("ALGORITHM")]
+        )
 
-    payload = jwt.decode(
-        token, os.getenv("JWT_SECRET_KEY"), algorithms=[os.getenv("ALGORITHM")]
-    )
-
-    print(payload)
-
-    if datetime.fromtimestamp(payload["exp"]) < datetime.now():
+        if datetime.fromtimestamp(payload["exp"]) < datetime.now():
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Token expired",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+    except (jwt.JWTError, ValidationError):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token expired",
+            detail="Invalid credentials.",
             headers={"WWW-Authenticate": "Bearer"},
         )
 
     currentEmployee = Employee.query.filter(
         Employee.username == payload["sub"]).first()
-    
-    print(currentEmployee)
 
     if currentEmployee is None:
         raise HTTPException(

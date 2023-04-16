@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from models.Models import Employee
-from dtos.EmployeeSignUp import EmployeeSignupDTO
-from dtos.APIResponse import APIResponse
+from dtos.EmployeeDTO import EmployeeSignupDTO
+from dtos.APIResponseDTO import APIResponseDTO
 from helpers.PasswordEncryptHelper import (
     getHashedPassword,
     verifyPassword
@@ -33,7 +33,7 @@ async def createEmployee(newEmployeeInfo: EmployeeSignupDTO):
     dbSession.add(newEmployee)
     dbSession.commit()
 
-    return APIResponse().successResponse("New employee is registered successfully!", newEmployee)
+    return APIResponseDTO().successResponse("New employee is registered successfully!", newEmployee)
 
 @userRouter.post("/employee/login")
 async def login(employeeSigninInfo: OAuth2PasswordRequestForm = Depends()):
@@ -45,7 +45,7 @@ async def login(employeeSigninInfo: OAuth2PasswordRequestForm = Depends()):
     if targetUser is None:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=jsonable_encoder(APIResponse().successResponse("Your username is incorrect!", responseBody))
+            detail=jsonable_encoder(APIResponseDTO().successResponse("Your username is incorrect!", None))
         )
 
     if (verifyPassword(ePassword, targetUser.password)):
@@ -58,5 +58,5 @@ async def login(employeeSigninInfo: OAuth2PasswordRequestForm = Depends()):
         responseBody = None
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=jsonable_encoder(APIResponse().successResponse("Your password is incorrect!", responseBody))
+            detail=jsonable_encoder(APIResponseDTO().successResponse("Your password is incorrect!", responseBody))
         )

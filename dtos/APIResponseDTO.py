@@ -1,7 +1,6 @@
-import json
 from fastapi.encoders import jsonable_encoder
 
-class APIResponse:
+class APIResponseDTO():
     code = None
     message = None
     data = None
