@@ -1,11 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 
 from controllers.DrinkController import drinkRouter
 from controllers.ImageController import imageRouter
 from controllers.UserController import userRouter
 
-app = FastAPI()
+from models.Models import Employee
+
+from helpers.JwtHelper import getCurrentEmployee
+
+app = FastAPI(title="Smoothie API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,7 +23,6 @@ app.include_router(drinkRouter)
 app.include_router(imageRouter)
 app.include_router(userRouter)
 
-@app.get("/")
-async def getGreeting():
-    return "This is Anh Nguyen smoothie API!"
-
+@app.get("/me")
+async def get_me(employee: Employee = Depends(getCurrentEmployee)):
+    return employee

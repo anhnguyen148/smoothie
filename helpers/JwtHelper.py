@@ -4,7 +4,6 @@ from typing import Union, Any
 from jose import jwt
 from dotenv import load_dotenv
 from models.Models import Employee
-from dtos.Auth import TokenPayload
 from pydantic import ValidationError
 from fastapi import Depends, HTTPException, status
 from dtos.APIResponse import APIResponse
@@ -17,61 +16,68 @@ def createAccessToken(subject: Union[str, Any], expiresDelta: int = None) -> str
     if expiresDelta is not None:
         expiresDelta = datetime.utcnow() + expiresDelta
     else:
-        expiresDelta = datetime.utcnow() + timedelta(minutes=int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")))
+        expiresDelta = datetime.utcnow(
+        ) + timedelta(minutes=int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")))
 
     toEncode = {
         "exp": expiresDelta,
         "sub": str(subject)
     }
 
-    encodedJwt = jwt.encode(toEncode, os.getenv("JWT_SECRET_KEY"), os.getenv("ALGORITHM"))
+    encodedJwt = jwt.encode(toEncode, os.getenv(
+        "JWT_SECRET_KEY"), os.getenv("ALGORITHM"))
 
     return encodedJwt
+
 
 def createRefreshToken(subject: Union[str, Any], expiresDelta: int = None) -> str:
     if expiresDelta is not None:
         expiresDelta = datetime.utcnow() + expiresDelta
     else:
-        expiresDelta = datetime.utcnow() + timedelta(minutes=int(os.getenv("REFRESH_TOKEN_EXPIRE_MINUTES")))
+        expiresDelta = datetime.utcnow(
+        ) + timedelta(minutes=int(os.getenv("REFRESH_TOKEN_EXPIRE_MINUTES")))
 
     toEncode = {
         "exp": expiresDelta,
         "sub": str(subject)
     }
 
-    encodedJwt = jwt.encode(toEncode, os.getenv("JWT_REFRESH_SECRET_KEY"), os.getenv("ALGORITHM"))
+    encodedJwt = jwt.encode(toEncode, os.getenv(
+        "JWT_REFRESH_SECRET_KEY"), os.getenv("ALGORITHM"))
 
     return encodedJwt
 
 
-reuseableOauth = OAuth2PasswordBearer(
-    tokenUrl="token"
+reusableOauth = OAuth2PasswordBearer(
+    tokenUrl="/employee/login",
+    scheme_name="JWT"
 )
 
-async def getCurrentEmployee(token: str = Depends(reuseableOauth)) -> Employee:
-    load_dotenv()
-    try:
-        payload = jwt.decode(
-            token, os.getenv("JWT_SECRET_KEY"), os.getenv("ALGORITHM")
+
+async def getCurrentEmployee(token: str = Depends(reusableOauth)):
+
+    payload = jwt.decode(
+        token, os.getenv("JWT_SECRET_KEY"), algorithms=[os.getenv("ALGORITHM")]
+    )
+
+    print(payload)
+
+    if datetime.fromtimestamp(payload["exp"]) < datetime.now():
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token expired",
+            headers={"WWW-Authenticate": "Bearer"},
         )
 
-        print(payload)
+    currentEmployee = Employee.query.filter(
+        Employee.username == payload["sub"]).first()
+    
+    print(currentEmployee)
 
-        tokenData = TokenPayload(**payload)
-
-        if datetime.fromtimestamp(tokenData.exp) < datetime.now():
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail= APIResponse().badResponse(401, "Token is expired."),
-                headers={"WWW-Authenticate": "Bearer"}
-            )
-    except (jwt.JWTError, ValidationError):
+    if currentEmployee is None:
         raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail= APIResponse().badResponse(403, "Could not validate credentials."),
-                headers={"WWW-Authenticate": "Bearer"}
-            )
-    
-    
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Could not find user",
+        )
 
-    return None
+    return currentEmployee

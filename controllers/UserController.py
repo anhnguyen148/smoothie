@@ -1,8 +1,6 @@
-from fastapi import APIRouter, status, HTTPException
-from fastapi.responses import RedirectResponse
-from dtos.Auth import EmployeeOut
+from fastapi import APIRouter, Depends, HTTPException, status
 from models.Models import Employee
-from dtos.EmployeeSignUp import EmployeeSignupDTO, EmployeeSigninDTO
+from dtos.EmployeeSignUp import EmployeeSignupDTO
 from dtos.APIResponse import APIResponse
 from helpers.PasswordEncryptHelper import (
     getHashedPassword,
@@ -12,11 +10,9 @@ from helpers.DatabaseHelper import dbSession
 from fastapi.encoders import jsonable_encoder
 from helpers.JwtHelper import (
     createAccessToken,
-    createRefreshToken,
-    
+    createRefreshToken  
 )
-from fastapi import Depends
-from helpers.JwtHelper import getCurrentEmployee
+from fastapi.security import OAuth2PasswordRequestForm
 
 userRouter = APIRouter()
 
@@ -40,25 +36,27 @@ async def createEmployee(newEmployeeInfo: EmployeeSignupDTO):
     return APIResponse().successResponse("New employee is registered successfully!", newEmployee)
 
 @userRouter.post("/employee/login")
-async def login(employeeSigninInfo: EmployeeSigninDTO):
+async def login(employeeSigninInfo: OAuth2PasswordRequestForm = Depends()):
     eUsername = employeeSigninInfo.username
     ePassword = employeeSigninInfo.password
 
     targetUser = Employee.query.filter(eUsername == Employee.username).first()
+
+    if targetUser is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=jsonable_encoder(APIResponse().successResponse("Your username is incorrect!", responseBody))
+        )
 
     if (verifyPassword(ePassword, targetUser.password)):
         responseBody = {
             "access_token": createAccessToken(targetUser.username),
             "refresh_token": createRefreshToken(targetUser.username),
         }
-        return APIResponse().successResponse("Login successfully!", responseBody)    
+        return responseBody
     else:
         responseBody = None
-        return APIResponse().successResponse("Your username and password is incorrect!", responseBody)
-    
-
-@userRouter.get('/me', summary='Get details of currently logged in user', response_model=EmployeeOut)
-async def getEmployee(employee: Employee = Depends(getCurrentEmployee)):
-    return employee
-
-    
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=jsonable_encoder(APIResponse().successResponse("Your password is incorrect!", responseBody))
+        )
