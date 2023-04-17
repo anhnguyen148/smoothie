@@ -17,7 +17,7 @@ async def getAllDrink():
     return apiResponse
 
 @drinkRouter.post("/drinks", summary="Add a new drink")
-async def addDrink(inputDrink: DrinkDTO, apiResponse: APIResponseDTO = Depends(getCurrentEmployee)):
+async def addDrink(inputDrink: DrinkDTO):
     newDrink = Drink()
     newDrink.name = inputDrink.name
     newDrink.description = inputDrink.description
@@ -33,7 +33,7 @@ async def addDrink(inputDrink: DrinkDTO, apiResponse: APIResponseDTO = Depends(g
     return apiResponse
 
 @drinkRouter.put("/drinks/{drinkId}", summary="Update a drink")
-async def updateDrink(drinkId: int, inputDrink: DrinkDTO, apiResponse: APIResponseDTO = Depends(getCurrentEmployee)):
+async def updateDrink(drinkId: int, inputDrink: DrinkDTO):
 
     targetDrink = Drink.query.filter(Drink.drink_id == drinkId).first()
 
@@ -55,7 +55,7 @@ async def updateDrink(drinkId: int, inputDrink: DrinkDTO, apiResponse: APIRespon
     return apiResponse
 
 @drinkRouter.delete("/drinks/{drinkId}", summary="Delete a drink")
-async def deleteDrink(drinkId: int, apiResponse: APIResponseDTO = Depends(getCurrentEmployee)):
+async def deleteDrink(drinkId: int):
     targetDrink = Drink.query.filter(Drink.drink_id == drinkId).first()
 
     if targetDrink is None:

@@ -11,7 +11,7 @@ class Branch(Base):
     branch_id = Column(INTEGER(11), primary_key=True)
     name = Column(String(20))
     location = Column(String(20))
-    phone = Column(BIGINT(20))
+    phone = Column(String(20))
     drinks = relationship('Drink', secondary='DrinkBranch')
 
 class Customer(Base):
