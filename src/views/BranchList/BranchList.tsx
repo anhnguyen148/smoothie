@@ -27,7 +27,7 @@ const BranchList: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <IonGrid>
+        <IonGrid className="ion-padding-top ion-margin-top">
           <IonRow>
           <img className="store" src="/assets/branches.png" alt="choose store" />
           </IonRow>

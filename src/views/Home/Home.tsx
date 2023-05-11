@@ -42,8 +42,7 @@ const Home: React.FC = () => {
               </button>
             </IonCol>
           </IonRow>
-        </IonGrid>        
-         
+        </IonGrid>         
       </IonContent>
 
       <IonFooter className="ion-no-border">        

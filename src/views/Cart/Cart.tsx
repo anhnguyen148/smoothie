@@ -21,7 +21,7 @@ import { chevronBackOutline, addCircleOutline, removeCircleOutline, navigate } f
 import { useIonRouter } from "@ionic/react";import { createHashHistory } from "history";
 
 
-const BranchList: React.FC = () => {
+const Cart: React.FC = () => {
   const router = useIonRouter();
 
   // move back to listing
@@ -59,7 +59,7 @@ const BranchList: React.FC = () => {
               <IonRow>
                   <IonCol size="3">
                     <IonCard className="itemImgCard">
-                      <img src="/assets/plum.png" alt="smoothie item" />
+                      <img src="http://localhost:8000/public/image/plum.png" alt="smoothie item" />
                       </IonCard>                       
                   </IonCol>
                   <IonCol size="9">
@@ -89,7 +89,7 @@ const BranchList: React.FC = () => {
                   </IonCol>
               </IonRow>
                 
-              <IonRow>
+              {/* <IonRow>
                   <IonCol size="3">
                     <IonCard className="itemImgCard">
                       <img src="/assets/celery.png" alt="smoothie item" />
@@ -120,7 +120,7 @@ const BranchList: React.FC = () => {
                         </IonRow>
                       </IonCardContent>                           
                   </IonCol>
-              </IonRow>
+              </IonRow> */}
                 {/* <IonRow className="ion-margin-bottom">
                     <IonCol size="3">
                       <IonCard className="itemImgCard">
@@ -230,4 +230,4 @@ const BranchList: React.FC = () => {
   );
 };
 
-export default BranchList;
+export default Cart;

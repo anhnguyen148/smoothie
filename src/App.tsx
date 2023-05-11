@@ -39,72 +39,72 @@ import './theme/variables.css';
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
+    <IonApp>
+        <IonReactRouter>
+            <IonRouterOutlet>
 
-        <Route exact path="/home">
-          <Home />
-        </Route>
+                <Route exact path="/home">
+                <Home />
+                </Route>
 
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
+                <Route exact path="/">
+                <Redirect to="/home" />
+                </Route>
 
-        <Route exact path="/branch-list">
-          <BranchList />
-        </Route>
+                <Route exact path="/branch-list">
+                <BranchList />
+                </Route>
 
-        <Route exact path="/sign-up">
-          <SignUp />
-        </Route>
+                <Route exact path="/sign-up">
+                <SignUp />
+                </Route>
 
-        <Route exact path="/sign-in">
-          <SignIn />
-        </Route>
+                <Route exact path="/sign-in">
+                <SignIn />
+                </Route>
 
-        <Route exact path="/reset-pw-1">
-          <ResetPw1 />
-        </Route>
+                <Route exact path="/reset-pw-1">
+                <ResetPw1 />
+                </Route>
 
-        <Route exact path="/reset-pw-2">
-          <ResetPw2 />
-        </Route>
+                <Route exact path="/reset-pw-2">
+                <ResetPw2 />
+                </Route>
 
-        <Route exact path="/reset-pw-3">
-          <ResetPw3 />
-        </Route>
+                <Route exact path="/reset-pw-3">
+                <ResetPw3 />
+                </Route>
 
-        <Route exact path="/reset-pw-4">
-          <ResetPw4 />
-        </Route>
-        
-        <Route exact path="/listing">
-          <Listing />
-        </Route>
-        <Route exact path="/user-info">
-          <UserInfo />
-        </Route>
-        <Route exact path="/payment">
-          <Payment />
-        </Route>
-        <Route exact path="/change-pw">
-          <ChangePw />
-        </Route>
-        <Route exact path="/transaction">
-          <Transaction />
-        </Route>
-        <Route exact path="/change-store">
-          <ChangeStore />
-        </Route>
+                <Route exact path="/reset-pw-4">
+                <ResetPw4 />
+                </Route>
+                
+                <Route exact path="/listing">
+                <Listing />
+                </Route>
+                <Route exact path="/user-info">
+                <UserInfo />
+                </Route>
+                <Route exact path="/payment">
+                <Payment />
+                </Route>
+                <Route exact path="/change-pw">
+                <ChangePw />
+                </Route>
+                <Route exact path="/transaction">
+                <Transaction />
+                </Route>
+                <Route exact path="/change-store">
+                <ChangeStore />
+                </Route>
 
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
+                <Route exact path="/cart">
+                <Cart />
+                </Route>
 
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+            </IonRouterOutlet>
+        </IonReactRouter>
+    </IonApp>
 );
 
 export default App;
