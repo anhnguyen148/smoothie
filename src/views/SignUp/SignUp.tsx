@@ -14,9 +14,16 @@ import {
 import { useIonRouter } from "@ionic/react";
 import { chevronBackOutline } from "ionicons/icons";
 import "./SignUp.css";
+import { useState } from "react";
+import axios from "axios";
 
 const SignUp: React.FC = () => {
   const router = useIonRouter();
+
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   // move to sign in page
   const GoToSignIn = () => {
     router.push("sign-in");
@@ -25,6 +32,23 @@ const SignUp: React.FC = () => {
   const Listing = () => {
     router.push("branch-list");
   };
+
+  // sign up handler
+  const signUpHandler = () => {
+    console.log(email, username, password);
+
+    axios.post("http://localhost:8000/customer/signup",
+      {
+        "email": email,
+        "username": username,
+        "password": password,
+      }
+    ).then((res: any) => {
+      
+      console.log(res);
+    })
+  }
+
   return (
     <IonPage>
       {/* HEADER */}
@@ -63,22 +87,22 @@ const SignUp: React.FC = () => {
         <IonGrid className="ion-margin-top">
           <IonRow className="ion-justify-content-center">
             <IonCol size="10">
-              <IonInput placeholder="Username_" class="custom"></IonInput>
+              <IonInput value={username} onIonChange={(e: any) => setUsername(e.target.value)} placeholder="Username_" class="custom"></IonInput>
             </IonCol>
           </IonRow>
           <IonRow className="ion-justify-content-center ion-margin-top">
             <IonCol size="10">
-              <IonInput placeholder="Email_" class="custom"></IonInput>
+              <IonInput value={email} onIonChange={(e: any) => setEmail(e.target.value)} placeholder="Email_" class="custom"></IonInput>
             </IonCol>
           </IonRow>
           <IonRow className="ion-justify-content-center ion-margin-top">
             <IonCol size="10">
-              <IonInput placeholder="Password_" class="custom"></IonInput>
+              <IonInput type="password" value={password} onIonChange={(e: any) => setPassword(e.target.value)} placeholder="Password_" class="custom"></IonInput>
             </IonCol>
           </IonRow>
           <IonRow className="ion-text-end ion-margin-top">
             <IonCol size="11">
-              <button className="signOutBtn">Sign Up</button>
+              <button onClick={signUpHandler} className="signOutBtn">Sign Up</button>
             </IonCol>
           </IonRow>
           <IonRow className="ion-text-end">
