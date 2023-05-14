@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from models.Models import Employee
+from models.Models import Employee, Customer
 from dtos.EmployeeDTO import EmployeeSignupDTO
 from dtos.APIResponseDTO import APIResponseDTO
+from dtos.CustomerDTO import CustomerSignupDTO
 from helpers.PasswordEncryptHelper import (
     getHashedPassword,
     verifyPassword
@@ -34,6 +35,18 @@ async def createEmployee(newEmployeeInfo: EmployeeSignupDTO):
     dbSession.commit()
 
     return APIResponseDTO().successResponse("New employee is registered successfully!", newEmployee)
+
+@userRouter.post("/customer/signup")
+async def createCustomer(newCustomerInfo: CustomerSignupDTO):
+    newCustomer = Customer()
+    newCustomer.email = newCustomerInfo.email
+    newCustomer.username = newCustomerInfo.username
+    newCustomer.password = getHashedPassword(newCustomerInfo.password)
+
+    dbSession.add(newCustomer)
+    dbSession.commit()
+
+    return APIResponseDTO().successResponse("New customer is registered successfully!", newCustomer)
 
 @userRouter.post("/employee/login")
 async def login(employeeSigninInfo: OAuth2PasswordRequestForm = Depends()):

@@ -28,6 +28,7 @@ class Customer(Base):
     zip = Column(String(100))
     state = Column(String(100))
     country = Column(String(100))
+    email = Column(String(100))
 
 class Drink(Base):
     __tablename__ = 'Drinks'
