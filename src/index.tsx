@@ -4,19 +4,21 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-// Redux zone
-import { Provider } from 'react-redux';
-import store from './store';
-import * as serviceWorker from './service-worker';
+import * as serviceWorker from "./service-worker";
+import rootReducer from "./redux-resources/reducers/index";
+import { Provider } from "react-redux";
+import { legacy_createStore as createStore } from "redux";
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
+
+const store = createStore(rootReducer);
 
 const render = () => {
     root.render(
         <Provider store={store}>
             <App />
-        </Provider>
+        </Provider>   
     );
 }
 

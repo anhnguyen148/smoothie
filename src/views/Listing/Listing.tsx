@@ -30,8 +30,9 @@ import {
 import { useIonRouter } from "@ionic/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { setCart, Cart } from '../../actions/cart';
-import { connect } from "react-redux";
+
+import { useSelector, useDispatch } from "react-redux";
+import { addItemtoCart } from '../../redux-resources/actions/cart';
 
 const Listing: React.FC = (props: any) => {
   const menuRef = React.useRef<HTMLIonMenuElement>(null);
@@ -50,6 +51,11 @@ const Listing: React.FC = (props: any) => {
   // drink list filter: smoothie, juice, all
   const [drinkType, setDrinkType] = useState("");
 
+  // Redux Zone--------------------------------------------
+  const cart = useSelector((state: any) => state.cart);
+  console.log(cart);
+  const dispatch = useDispatch();
+  // ------------------------------------------------------
 
   // axios JSON
   useEffect(() => {
@@ -96,12 +102,8 @@ const Listing: React.FC = (props: any) => {
       quantity: itemQuantity,
     };
 
-    const newCart: Cart = {
-      items: [addItem]
-    }
-
-    
-    props.dispatch(setCart(newCart));
+    dispatch(addItemtoCart(addItem));
+    console.log(cart);
   };
 
   return (
@@ -191,7 +193,7 @@ const Listing: React.FC = (props: any) => {
                     {/* <IonBadge slot="start">11</IonBadge> */}
                   </IonButton>
                   <button id="numberItems" onClick={() => goToCart()}>
-                    2
+                    {cart.items.length}
                   </button>
                 </IonButtons>
               </IonCol>
@@ -400,8 +402,4 @@ const Listing: React.FC = (props: any) => {
   );
 };
 
-// export default Listing;
-
-export default connect((props: any) => ({
-  cart: props.cart.items
-}))(Listing);
+export default Listing;
