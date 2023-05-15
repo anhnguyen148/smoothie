@@ -104,6 +104,7 @@ const App: React.FC = () => (
 
             </IonRouterOutlet>
         </IonReactRouter>
+        
     </IonApp>
 );
 

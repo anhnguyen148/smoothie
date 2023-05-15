@@ -30,8 +30,10 @@ import {
 import { useIonRouter } from "@ionic/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { setCart, Cart } from '../../actions/cart';
+import { connect } from "react-redux";
 
-const Listing: React.FC = () => {
+const Listing: React.FC = (props: any) => {
   const menuRef = React.useRef<HTMLIonMenuElement>(null);
   const router = useIonRouter();
 
@@ -45,10 +47,9 @@ const Listing: React.FC = () => {
 
   // add number of item to card
   const [itemQuantity, setItemQuantity] = useState(0);
-  // cart items array
-  const [cartItemsArray, setCartItemsArray] = useState([] as any);
   // drink list filter: smoothie, juice, all
   const [drinkType, setDrinkType] = useState("");
+
 
   // axios JSON
   useEffect(() => {
@@ -62,25 +63,6 @@ const Listing: React.FC = () => {
   const searchHandler = (e: any) => {
     e.preventDefault();
     setSearchInput(e.target.value);
-  };
-
-  // get cart data from local storage
-  const getCartDataFromStorage = () => {
-    const cartDataFromStorage: string | null = localStorage.getItem("cartData");
-
-    console.log(cartDataFromStorage);
-    if (cartDataFromStorage) {
-      setCartItemsArray(JSON.parse(cartDataFromStorage));
-    } else {
-      // setCartItemsArray([]);
-    }
-  };
-
-  // set cart data from state to storage
-  const setCartDataToStorage = () => {
-    if (cartItemsArray) {
-      localStorage.setItem("cartData", JSON.stringify(cartItemsArray));
-    }
   };
 
   //close sidemenu when change path
@@ -113,9 +95,13 @@ const Listing: React.FC = () => {
       itemData: chosenItem,
       quantity: itemQuantity,
     };
-    getCartDataFromStorage();
-    setCartItemsArray([...cartItemsArray, addItem]);
-    setCartDataToStorage();
+
+    const newCart: Cart = {
+      items: [addItem]
+    }
+
+    
+    props.dispatch(setCart(newCart));
   };
 
   return (
@@ -337,7 +323,7 @@ const Listing: React.FC = () => {
       <IonModal isOpen={isOpen}>
         <IonToolbar className="ion-padding-top">
           <IonButtons slot="start">
-            <IonIcon
+            <IonIcon color="primary"
               slot="icon-only"
               icon={closeOutline}
               onClick={() => setIsOpen(false)}
@@ -369,7 +355,7 @@ const Listing: React.FC = () => {
                       {chosenItem ? chosenItem["name"] : ""}
                     </IonLabel>
                     <div className="ion-padding-top">
-                      <p>{chosenItem ? chosenItem["description"] : ""}</p>
+                      <p>{chosenItem ? chosenItem["description"] : ""} --- {props.cart}</p> 
                     </div>
                     <div className="ion-padding-top">
                       <IonLabel className="drinkLabelModal">
@@ -414,4 +400,8 @@ const Listing: React.FC = () => {
   );
 };
 
-export default Listing;
+// export default Listing;
+
+export default connect((props: any) => ({
+  cart: props.cart.items
+}))(Listing);
