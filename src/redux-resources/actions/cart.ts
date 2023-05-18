@@ -1,6 +1,6 @@
-export const addItemtoCart = function(newItem: any) {
+export const addItemtoCart = function(cartItem: any) {
     return {
         type: 'ADD_ITEM',
-        payload: {newItem}
+        payload: {cartItem}
     }
 }

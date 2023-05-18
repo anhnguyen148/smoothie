@@ -17,18 +17,39 @@ import {
   IonFooter,
 } from "@ionic/react";
 import "./Cart.css";
-import { chevronBackOutline, addCircleOutline, removeCircleOutline, navigate } from "ionicons/icons";
-import { useIonRouter } from "@ionic/react";import { createHashHistory } from "history";
-
+import {
+  chevronBackOutline,
+  addCircleOutline,
+  removeCircleOutline,
+  navigate,
+} from "ionicons/icons";
+import { useIonRouter } from "@ionic/react";
+import { createHashHistory } from "history";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const Cart: React.FC = () => {
   const router = useIonRouter();
+
+  // Redux Zone -----------------------
+  const cart = useSelector((state: any) => state.cart);
+  const dispatch = useDispatch();
+  // ----------------------------------
+
+  const [cartItemsArray, setCartItemsArray] = useState([]);
 
   // move back to listing
   let history = createHashHistory();
   const goBack = () => {
     history.go(-1);
   };
+
+  useEffect(() => {
+    console.log("here!");
+    console.log(cart);
+
+    setCartItemsArray(cart.items);
+  });
 
   return (
     <IonPage>
@@ -44,52 +65,73 @@ const Cart: React.FC = () => {
           </IonButtons>
           <IonGrid className="cartGrid">
             <IonRow className="ion-text-start">
-                <p id="cart">Your cart</p>
+              <p id="cart">Your cart</p>
             </IonRow>
             <IonRow className="ion-text-start ion-margin-start">
-                <p id="itemAmount">2 items</p>
+              <p id="itemAmount">2 items</p>
             </IonRow>
-        </IonGrid>
+          </IonGrid>
         </IonToolbar>
       </IonHeader>
 
       {/* BODY */}
       <IonContent fullscreen>
         <IonGrid className="cartGrid ion-padding-top">
-              <IonRow>
-                  <IonCol size="3">
-                    <IonCard className="itemImgCard">
-                      <img src="http://localhost:8000/public/image/plum.png" alt="smoothie item" />
-                      </IonCard>                       
-                  </IonCol>
-                  <IonCol size="9">
-                      <IonCardHeader className="itemName">
-                          <h5>Plum Smoothie</h5>
-                      </IonCardHeader>
-                      <IonCardContent className="price">
-                        <IonRow>
-                          <IonCol>
-                            <p>$7.49</p>
+          {cartItemsArray.map((item: any, index: number) => {
+            return (
+              <IonRow key={index}>
+                <IonCol size="3">
+                  <IonCard className="itemImgCard">
+                    <img
+                      src={"http://localhost:8000/public/image/" + item.cartItem.itemData.image_name}
+                      alt="smoothie item"
+                    />
+                  </IonCard>
+                </IonCol>
+                <IonCol size="9">
+                  <IonCardHeader className="itemName">
+                    <h5>{item.cartItem.itemData.name}</h5>
+                  </IonCardHeader>
+                  <IonCardContent className="price">
+                    <IonRow>
+                      <IonCol>
+                        <p>{item.cartItem.itemData.price}</p>
+                      </IonCol>
+                      <IonCol>
+                        <IonRow className="ion-text-center">
+                          <IonCol className="ion-no-padding">
+                            <p>
+                              <IonIcon
+                                className="addRemoveBtn"
+                                slot="icon-only"
+                                icon={addCircleOutline}
+                              ></IonIcon>
+                            </p>
                           </IonCol>
-                          <IonCol>
-                            <IonRow className="ion-text-center">
-                              <IonCol className="ion-no-padding">
-                                <p><IonIcon className="addRemoveBtn" slot="icon-only" icon={addCircleOutline}></IonIcon></p>
-                              </IonCol>
-                              <IonCol className="ion-no-padding">
-                                <p><strong>1</strong></p>
-                              </IonCol>
-                              <IonCol className="ion-no-padding">
-                                <p><IonIcon className="addRemoveBtn" slot="icon-only" icon={removeCircleOutline}></IonIcon></p>
-                              </IonCol>
-                            </IonRow>
+                          <IonCol className="ion-no-padding">
+                            <p>
+                              <strong>1</strong>
+                            </p>
+                          </IonCol>
+                          <IonCol className="ion-no-padding">
+                            <p>
+                              <IonIcon
+                                className="addRemoveBtn"
+                                slot="icon-only"
+                                icon={removeCircleOutline}
+                              ></IonIcon>
+                            </p>
                           </IonCol>
                         </IonRow>
-                      </IonCardContent>                           
-                  </IonCol>
+                      </IonCol>
+                    </IonRow>
+                  </IonCardContent>
+                </IonCol>
               </IonRow>
-                
-              {/* <IonRow>
+            );
+          })}
+
+          {/* <IonRow>
                   <IonCol size="3">
                     <IonCard className="itemImgCard">
                       <img src="/assets/celery.png" alt="smoothie item" />
@@ -121,7 +163,7 @@ const Cart: React.FC = () => {
                       </IonCardContent>                           
                   </IonCol>
               </IonRow> */}
-                {/* <IonRow className="ion-margin-bottom">
+          {/* <IonRow className="ion-margin-bottom">
                     <IonCol size="3">
                       <IonCard className="itemImgCard">
                         <img src="/assets/strawberry.png" alt="smoothie item" />

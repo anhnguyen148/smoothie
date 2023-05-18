@@ -34,7 +34,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addItemtoCart } from '../../redux-resources/actions/cart';
 
-const Listing: React.FC = (props: any) => {
+const Listing: React.FC = () => {
   const menuRef = React.useRef<HTMLIonMenuElement>(null);
   const router = useIonRouter();
 
@@ -97,12 +97,10 @@ const Listing: React.FC = (props: any) => {
   };
 
   const addToCartHandler = () => {
-    const addItem: any = {
+    dispatch(addItemtoCart({
       itemData: chosenItem,
       quantity: itemQuantity,
-    };
-
-    dispatch(addItemtoCart(addItem));
+    }));
     console.log(cart);
   };
 
@@ -357,7 +355,7 @@ const Listing: React.FC = (props: any) => {
                       {chosenItem ? chosenItem["name"] : ""}
                     </IonLabel>
                     <div className="ion-padding-top">
-                      <p>{chosenItem ? chosenItem["description"] : ""} --- {props.cart}</p> 
+                      <p>{chosenItem ? chosenItem["description"] : ""}</p> 
                     </div>
                     <div className="ion-padding-top">
                       <IonLabel className="drinkLabelModal">
