@@ -24,7 +24,7 @@ export default function SideBar() {
                 icon="fa-solid fa-clipboard" />
 
             <SideBarItem title="Employees"
-                path="employees"
+                path="employee"
                 icon="fa-solid fa-user" />
         </ul>
     );
