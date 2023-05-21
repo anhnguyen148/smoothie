@@ -17,7 +17,14 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 userRouter = APIRouter()
 
-@userRouter.post("/employee/signup")
+@userRouter.get("/employees", summary="Get All Employees")
+async def getAllEmployee():
+    employees = Employee.query.all()
+    apiResponse = APIResponseDTO().successResponse("Here is the list of employees.", employees)
+    return apiResponse
+
+
+@userRouter.post("/employees/signup")
 async def createEmployee(newEmployeeInfo: EmployeeSignupDTO):
 
     print(newEmployeeInfo.address)
@@ -36,7 +43,7 @@ async def createEmployee(newEmployeeInfo: EmployeeSignupDTO):
 
     return APIResponseDTO().successResponse("New employee is registered successfully!", newEmployee)
 
-@userRouter.post("/customer/signup")
+@userRouter.post("/customers/signup")
 async def createCustomer(newCustomerInfo: CustomerSignupDTO):
     newCustomer = Customer()
     newCustomer.email = newCustomerInfo.email
@@ -48,7 +55,7 @@ async def createCustomer(newCustomerInfo: CustomerSignupDTO):
 
     return APIResponseDTO().successResponse("New customer is registered successfully!", newCustomer)
 
-@userRouter.post("/employee/login")
+@userRouter.post("/employees/login")
 async def login(employeeSigninInfo: OAuth2PasswordRequestForm = Depends()):
     eUsername = employeeSigninInfo.username
     ePassword = employeeSigninInfo.password

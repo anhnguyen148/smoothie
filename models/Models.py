@@ -55,7 +55,7 @@ class Employee(Base):
     password = Column(String(50))
     address = Column(String(40))
     branch_id = Column(ForeignKey('Branches.branch_id'), index=True)
-
+    position = Column(String(20))
     branch = relationship('Branch')
 
 class Order(Base):
