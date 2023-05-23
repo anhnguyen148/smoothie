@@ -2,17 +2,17 @@ import NotifItem from "./NotifItem";
 
 export default function Notifications() {
     return (
-        <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+        <li className="nav-item dropdown no-arrow mx-1">
+            <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
+                <i className="fas fa-bell fa-fw"></i>
                  {/* Counter - Alerts  */}
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span className="badge badge-danger badge-counter">3+</span>
             </a>
              {/* Dropdown - Alerts  */}
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
+                <h6 className="dropdown-header">
                     Alerts Center
                 </h6>
                 <NotifItem 
@@ -30,7 +30,7 @@ export default function Notifications() {
                     icon="fa-exclamation-triangle"
                     date="December 2, 2019"
                     alert="Spending Alert: We've noticed unusually high spending for your account." />
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                <a className="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
             </div>
         </li>
     )

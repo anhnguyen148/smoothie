@@ -3,16 +3,16 @@ import SideBarItem from "./SideBarItem";
 
 export default function SideBar() {
     return (
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <SideBarHead />            
-            <hr class="sidebar-divider my-0"/>
+            <hr className="sidebar-divider my-0"/>
             <SideBarItem 
                 title="Dashboard"
                 path="/dashboard"
                 icon="fas fa-fw fa-tachometer-alt" />
 
-            <hr class="sidebar-divider"/>
-            <div class="sidebar-heading">
+            <hr className="sidebar-divider"/>
+            <div className="sidebar-heading">
                 Management
             </div>            
             <SideBarItem title="Orders"
