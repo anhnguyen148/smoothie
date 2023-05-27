@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from models.Models import Employee, Customer
-from dtos.EmployeeDTO import EmployeeSignupDTO
+from dtos.EmployeeDTO import EmployeeDTO
 from dtos.APIResponseDTO import APIResponseDTO
 from dtos.CustomerDTO import CustomerSignupDTO
 from helpers.PasswordEncryptHelper import (
@@ -24,8 +24,8 @@ async def getAllEmployee():
     return apiResponse
 
 
-@userRouter.post("/employees/signup")
-async def createEmployee(newEmployeeInfo: EmployeeSignupDTO):
+@userRouter.post("/employees/signup", summary="Create new staff account")
+async def createEmployee(newEmployeeInfo: EmployeeDTO):
 
     print(newEmployeeInfo.address)
 
@@ -34,16 +34,17 @@ async def createEmployee(newEmployeeInfo: EmployeeSignupDTO):
     newEmployee.email = newEmployeeInfo.email
     newEmployee.name = newEmployeeInfo.name
     newEmployee.username = newEmployeeInfo.username
-    newEmployee.password = getHashedPassword(newEmployeeInfo.password)
+    newEmployee.password = newEmployeeInfo.password
     newEmployee.phone = newEmployeeInfo.phone
     newEmployee.branch_id = newEmployeeInfo.branchId
+    newEmployee.position = newEmployeeInfo.position
 
     dbSession.add(newEmployee)
     dbSession.commit()
 
     return APIResponseDTO().successResponse("New employee is registered successfully!", newEmployee)
 
-@userRouter.post("/customers/signup")
+@userRouter.post("/customers/signup", summary="Customer sign up a new account")
 async def createCustomer(newCustomerInfo: CustomerSignupDTO):
     newCustomer = Customer()
     newCustomer.email = newCustomerInfo.email
@@ -80,3 +81,19 @@ async def login(employeeSigninInfo: OAuth2PasswordRequestForm = Depends()):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=jsonable_encoder(APIResponseDTO().successResponse("Your password is incorrect!", responseBody))
         )
+    
+@userRouter.delete("/employees/{employee_id}", summary="Delete a Staff Account")
+async def deleteEmployee(employeeId: int):
+    targetEmployee = Employee.query.filter(Employee.employee_id == employeeId).first()
+
+    if targetEmployee is None:
+        apiResponse = APIResponseDTO().badResponse(400, "The target staff acount is not found.", None)
+    else:
+        dbSession.delete(targetEmployee)
+
+        dbSession.flush()
+        dbSession.commit()
+
+        apiResponse = APIResponseDTO().successResponse("Delete successfully!", None)
+    
+    return apiResponse

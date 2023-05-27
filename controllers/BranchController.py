@@ -10,7 +10,6 @@ branchController = APIRouter()
 @branchController.get("/branch")
 async def getAllBranch():
     branches = Branch.query.all()
-
     return APIResponseDTO().successResponse("This is the list of branches.", branches)
 
 @branchController.post("/branch")

@@ -66,6 +66,6 @@ async def deleteDrink(drinkId: int):
         dbSession.flush()
         dbSession.commit()
 
-        apiResponse = APIResponseDTO().successResponse("Delete the drink succesfully!", None)
+        apiResponse = APIResponseDTO().successResponse("Delete the drink successfully!", None)
 
     return apiResponse
