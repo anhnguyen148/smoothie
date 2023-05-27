@@ -137,7 +137,7 @@ export default function Employees() {
               </tfoot>
             </table>
             {isModalOpen && (
-              <DeleteStaffModal name={chosenItem["name"]} id={chosenItem["drink_id"]}/>
+              <DeleteStaffModal name={chosenItem["name"]} id={chosenItem["employee_id"]}/>
             )}
           </div>
         </div>
