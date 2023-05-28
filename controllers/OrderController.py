@@ -9,14 +9,14 @@ orderRouter = APIRouter()
 
 @orderRouter.get("/orders", summary="Get all orders")
 async def getAllOrders():
+    qu = dbSession.query(Order, DrinkOrder, Customer).join(DrinkOrder, Order.order_id == DrinkOrder.order_id).join(Customer, Order.customer_id == Customer.customer_id).all()
+    res = ""
+    for q in qu:
+        order, order_detail, customer = q
+        res = res + str(order.order_id) + " " + str(order_detail.order_id) + " " + str(customer.last_name) + "\n"
 
-    query = text("""SELECT Orders.customer_id, Orders.order_date, Orders.branch_id, DrinkOrder.order_id, DrinkOrder.drink_id, DrinkOrder.quantity, Drinks.price FROM Orders LEFT JOIN DrinkOrder ON Orders.order_id = DrinkOrder.order_id JOIN Drinks ON DrinkOrder.drink_id = Drink.drink_id""")
-    result = dbSession.execute(query)
-    # orders = (
-    #     dbSession.query(Order)
-    #     .join(DrinkOrder, Order.order_id == DrinkOrder.order_id)
-    #     .all()
-    # )
-    for order in result:
-        print(order, "\n")
+    return res
+
+
+
     
