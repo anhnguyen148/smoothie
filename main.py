@@ -4,7 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from controllers.DrinkController import drinkRouter
 from controllers.ImageController import imageRouter
 from controllers.UserController import userRouter
-from controllers.BranchController import branchController
+from controllers.BranchController import branchRouter
+from controllers.OrderController import orderRouter
 
 from models.Models import Employee
 
@@ -23,7 +24,8 @@ app.add_middleware(
 app.include_router(drinkRouter)
 app.include_router(imageRouter)
 app.include_router(userRouter)
-app.include_router(branchController)
+app.include_router(branchRouter)
+app.include_router(orderRouter)
 
 @app.get("/me")
 async def get_me(employee: Employee = Depends(getCurrentEmployee)):

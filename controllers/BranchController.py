@@ -5,14 +5,14 @@ from sqlalchemy.inspection import inspect
 from dtos.BranchDTO import BranchDTO
 from helpers.DatabaseHelper import dbSession
 
-branchController = APIRouter()
+branchRouter = APIRouter()
 
-@branchController.get("/branch")
-async def getAllBranch():
+@branchRouter.get("/branch")
+async def getAllBranches():
     branches = Branch.query.all()
     return APIResponseDTO().successResponse("This is the list of branches.", branches)
 
-@branchController.post("/branch")
+@branchRouter.post("/branch")
 async def addNewBranch(inputBranch: BranchDTO):
     newBranch = Branch()
     newBranch.name = inputBranch.name
@@ -26,7 +26,7 @@ async def addNewBranch(inputBranch: BranchDTO):
 
     return apiResponse
 
-@branchController.put("/branch/{branchId}")
+@branchRouter.put("/branch/{branchId}")
 async def updateBranch(branchId: int, inputBranch: BranchDTO):
     targetBranch = Branch.query.filter(Branch.branch_id == branchId).first()
 
@@ -44,7 +44,7 @@ async def updateBranch(branchId: int, inputBranch: BranchDTO):
 
     return apiResponse
 
-@branchController.delete("/drink/{branchId}")
+@branchRouter.delete("/drink/{branchId}")
 async def deleteBranch(branchId: int):
     targetBranch = Branch.query.filter(Branch.branch_id == branchId).first()
 

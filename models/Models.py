@@ -63,6 +63,7 @@ class Order(Base):
     order_id = Column(INTEGER(11), primary_key=True)
     order_date = Column(String(20))
     total = Column(DECIMAL(6, 2))
+    status = Column(String(20))
     customer_id = Column(ForeignKey('Customers.customer_id'), index=True)
     branch_id = Column(ForeignKey('Branches.branch_id'), index=True)
     branch = relationship('Branch')

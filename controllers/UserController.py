@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from models.Models import Employee, Customer
 from dtos.EmployeeDTO import EmployeeDTO
-from dtos.APIResponseDTO import APIResponseDTO
 from dtos.CustomerDTO import CustomerSignupDTO
+from dtos.APIResponseDTO import APIResponseDTO
 from helpers.PasswordEncryptHelper import (
     getHashedPassword,
     verifyPassword
@@ -18,7 +18,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 userRouter = APIRouter()
 
 @userRouter.get("/employees", summary="Get All Employees")
-async def getAllEmployee():
+async def getAllEmployees():
     employees = Employee.query.all()
     apiResponse = APIResponseDTO().successResponse("Here is the list of employees.", employees)
     return apiResponse
@@ -36,7 +36,7 @@ async def createEmployee(newEmployeeInfo: EmployeeDTO):
     newEmployee.username = newEmployeeInfo.username
     newEmployee.password = newEmployeeInfo.password
     newEmployee.phone = newEmployeeInfo.phone
-    newEmployee.branch_id = newEmployeeInfo.branchId
+    newEmployee.branchId = newEmployeeInfo.branchId
     newEmployee.position = newEmployeeInfo.position
 
     dbSession.add(newEmployee)

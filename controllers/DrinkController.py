@@ -10,7 +10,7 @@ from sqlalchemy import delete
 drinkRouter = APIRouter()
 
 @drinkRouter.get("/drinks", summary="Get all drink")
-async def getAllDrink():
+async def getAllDrinks():
     drinks = Drink.query.all()
     apiResponse = APIResponseDTO().successResponse("Here is the list of drinks.", drinks)
 
