@@ -106,3 +106,4 @@ D:\PersonalStuffs\SmoothiShopApp\smoothie\SmoothieShopAPI\obj\Debug\net6.0\refin
 D:\PersonalStuffs\SmoothiShopApp\smoothie\SmoothieShopAPI\obj\Debug\net6.0\SmoothieShopAPI.pdb
 D:\PersonalStuffs\SmoothiShopApp\smoothie\SmoothieShopAPI\obj\Debug\net6.0\SmoothieShopAPI.genruntimeconfig.cache
 D:\PersonalStuffs\SmoothiShopApp\smoothie\SmoothieShopAPI\obj\Debug\net6.0\ref\SmoothieShopAPI.dll
+D:\PersonalStuffs\SmoothiShopApp\smoothie\SmoothieShopAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
