@@ -24,7 +24,7 @@ namespace SmoothieShopAPI.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Task<Branch> GetABranchByID(int id);
+        public Task<Branch?> GetABranchByID(int id);
 
         /// <summary>
         /// Attemp to add a new branch, and return a <see cref="Branch"/> object, which is the branch after being added to the DB.
@@ -39,7 +39,7 @@ namespace SmoothieShopAPI.Services
         /// <param name="branchID"></param>
         /// <param name="updateBranch"></param>
         /// <returns></returns>
-        public Task<Branch> UpdateBranch(int branchID, BranchDTO updateBranch);
+        public Task<Branch?> UpdateBranch(int branchID, BranchDTO updateBranch);
 
         /// <summary>
         /// Attemp to remove a branch, return true if success, otherwise, return false.
@@ -58,6 +58,7 @@ namespace SmoothieShopAPI.Services
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
+        /// <inheritdoc/>
         public async Task<Branch> AddABranch(BranchDTO newBranch)
         {
             var newBranchObj = new Branch();
@@ -71,29 +72,74 @@ namespace SmoothieShopAPI.Services
             return addedBranch.Entity;
         }
 
+        /// <inheritdoc/>
         public IDbContextTransaction BeginTransaction()
         {
-            throw new NotImplementedException();
+            return _dbContext.Database.BeginTransaction();
         }
 
-        public Task<Branch> GetABranchByID(int id)
+        /// <inheritdoc/>
+        public async Task<Branch?> GetABranchByID(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Branches.FirstOrDefaultAsync(b => b.BranchId == id);
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<Branch>> GetAllBranches()
         {
             return await _dbContext.Branches.ToListAsync();
         }
 
-        public Task<bool> RemoveBranch(int branchID)
+        /// <inheritdoc/>
+        public async Task<bool> RemoveBranch(int branchID)
         {
-            throw new NotImplementedException();
+            var targetBranch = _dbContext.Branches.FirstOrDefault(b => b.BranchId == branchID);
+
+            if (targetBranch == null) {
+                throw new ArgumentNullException("The target branch is not exist.", nameof(branchID));
+            }
+
+            var deletedBranch = _dbContext.Branches.Remove(targetBranch);
+            await _dbContext.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<Branch> UpdateBranch(int branchID, BranchDTO updateBranch)
+        /// <inheritdoc/>
+        public async Task<Branch?> UpdateBranch(int branchID, BranchDTO updateBranch)
         {
-            throw new NotImplementedException();
+            if (branchID < 1)
+            {
+                throw new ArgumentOutOfRangeException("Invalid branch id.", nameof(branchID));
+            }
+
+            if (updateBranch == null) 
+            {
+                throw new ArgumentOutOfRangeException("Invalid branch updated data.", nameof(updateBranch));
+            }
+
+            var targetBranch = _dbContext.Branches.FirstOrDefault(b => b.BranchId == branchID);
+
+            if (targetBranch == null)
+            {
+                throw new ArgumentNullException("The target branch is not exist.", nameof(targetBranch));
+            }
+
+            targetBranch.Location = updateBranch.Location;
+            targetBranch.Phone = updateBranch.Phone;
+            targetBranch.Name = updateBranch.Name;
+
+            var res = _dbContext.Branches.Update(targetBranch);
+            await _dbContext.SaveChangesAsync();
+
+            if (res == null)
+            {
+                return null;
+            }
+            else {
+                return await _dbContext.Branches.FirstAsync(b => b.BranchId == branchID);
+            }
+
         }
     }
 }

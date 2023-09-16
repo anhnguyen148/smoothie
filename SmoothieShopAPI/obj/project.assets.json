@@ -1329,26 +1329,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\quan.nguyen\\.nuget\\packages\\": {},
-    "C:\\Users\\quan.nguyen\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
+    "C:\\Users\\nguye\\.nuget\\packages\\": {},
+    "C:\\Users\\nguye\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PersonalStuffs\\SmoothiShopApp\\smoothie\\SmoothieShopAPI\\SmoothieShopAPI.csproj",
+      "projectUniqueName": "D:\\personalStuffs\\smoothie\\SmoothieShopAPI\\SmoothieShopAPI.csproj",
       "projectName": "SmoothieShopAPI",
-      "projectPath": "D:\\PersonalStuffs\\SmoothiShopApp\\smoothie\\SmoothieShopAPI\\SmoothieShopAPI.csproj",
-      "packagesPath": "C:\\Users\\quan.nguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\PersonalStuffs\\SmoothiShopApp\\smoothie\\SmoothieShopAPI\\obj\\",
+      "projectPath": "D:\\personalStuffs\\smoothie\\SmoothieShopAPI\\SmoothieShopAPI.csproj",
+      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+      "outputPath": "D:\\personalStuffs\\smoothie\\SmoothieShopAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Users\\quan.nguyen\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
+        "C:\\Users\\nguye\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\quan.nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Users\\quan.nguyen\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
