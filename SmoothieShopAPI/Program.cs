@@ -13,6 +13,13 @@ builder.Services.AddCors(options => {
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SmoothieContext>(options => options.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.6.12-mariadb")));
 
+// set up security stuffs.
+var securityStuffs = builder.Configuration.GetSection("SecurityStuffs");
+var secretKey = securityStuffs.GetSection("SecretKey").Get<String>();
+System.Environment.SetEnvironmentVariable("SECRET_KEY", secretKey);
+
+Console.WriteLine(secretKey);
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
