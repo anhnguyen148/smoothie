@@ -49,10 +49,12 @@ namespace SmoothieShopAPI.Services
     public class CustomerService : ICustomerService
     {
         private readonly SmoothieContext _dbContext;
+        private readonly IPasswordService _passwordService;
 
-        public CustomerService(SmoothieContext dbContext)
+        public CustomerService(SmoothieContext dbContext, IPasswordService passwordService)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            _passwordService = passwordService;
         }
 
         /// <inheritdoc/>
@@ -69,7 +71,7 @@ namespace SmoothieShopAPI.Services
             newCustomerObj.LastName = addCustomer.LastName;
             newCustomerObj.Phone = addCustomer.Phone;
             newCustomerObj.Username = addCustomer.Username;
-            newCustomerObj.Password = addCustomer.Password;
+            newCustomerObj.Password = _passwordService.EncryptPassword(addCustomer.Password);
             newCustomerObj.AddressLine1 = addCustomer.AddressLine1;
             newCustomerObj.AddressLine2 = addCustomer.AddressLine2;
             newCustomerObj.City = addCustomer.City;

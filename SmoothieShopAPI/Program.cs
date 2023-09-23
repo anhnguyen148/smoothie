@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SmoothieShopAPI.Models;
+using SmoothieShopAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
