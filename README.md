@@ -6,6 +6,7 @@ Introducing my latest mobile application, a user-friendly platform designed for 
 
 ## Author:
 Anh Nguyen
+Quan Nguyen
 
 ## Features
 
